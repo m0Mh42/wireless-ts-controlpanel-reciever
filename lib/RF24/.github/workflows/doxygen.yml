@@ -1,0 +1,71 @@
+name: Docs
+
+on:
+  pull_request:
+    branches: [master]
+    paths:
+      - "*.h"
+      - "docs/**"
+      - "!docs/README.md"
+      - "*.md"
+      - "utility/template/*.h"
+      - "examples**.cpp"
+      - "examples**.ino"
+      - "images/**"
+      - "datasheets/**"
+      - ".github/workflows/doxygen.yml"
+      - "Doxyfile"
+      - "library.properties" # get lib version from here
+  push:
+    branches: [master]
+    paths:
+      - "*.h"
+      - "docs/**"
+      - "!docs/README.md"
+      - "*.md"
+      - "utility/template/*.h"
+      - "examples**.cpp"
+      - "examples**.ino"
+      - "images/**"
+      - "datasheets/**"
+      - ".github/workflows/doxygen.yml"
+      - "Doxyfile"
+      - "library.properties" # get lib version from here
+    tags: ["*"]
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
+
+jobs:
+  check-spelling:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24.x
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - name: Install cSpell
+        run: npm install -g cspell
+      - run: npx cspell --gitignore --config cspell.config.yaml .
+
+  build:
+    uses: nRF24/.github/.github/workflows/build_docs.yaml@main
+    with:
+      doxygen-version: '1.15.0'
+
+  deploy:
+    needs: [build]
+    if: github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/tags/')
+    permissions:
+      # to authenticate the gh-pages environment
+      id-token: write
+      # to upload to GitHub Pages
+      pages: write
+    uses: nRF24/.github/.github/workflows/deploy_docs.yaml@main
+    secrets: inherit

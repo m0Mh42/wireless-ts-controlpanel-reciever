@@ -1,0 +1,71 @@
+name: PlatformIO
+
+on:
+  pull_request:
+    branches: [master]
+    paths:
+      - ".github/workflows/build_platformIO.yml"
+      - "library.json"
+      - "examples/**"
+      - "!examples/old_backups/**"
+      - "!examples/rf24_ATTiny/**"
+  push:
+    branches: [master]
+    paths:
+      - ".github/workflows/build_platformIO.yml"
+      - "library.json"
+      - "examples/**"
+      - "!examples/old_backups/**"
+      - "!examples/rf24_ATTiny/**"
+    tags: ["*"]
+
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
+
+jobs:
+  validate_lib_json:
+    name: validate library.json
+    uses: nRF24/.github/.github/workflows/validate_platformio.yaml@main
+    secrets: inherit
+
+  build:
+    needs: [validate_lib_json]
+    uses: nRF24/.github/.github/workflows/build_platformio.yaml@main
+    with:
+     example-path: ${{ matrix.example }}
+     board-id: ${{ matrix.board }}
+    strategy:
+      fail-fast: false
+      matrix:
+        example:
+          - "examples/GettingStarted/GettingStarted.ino"
+          - "examples/AcknowledgementPayloads/AcknowledgementPayloads.ino"
+          - "examples/ManualAcknowledgements/ManualAcknowledgements.ino"
+          - "examples/StreamingData/StreamingData.ino"
+          - "examples/MulticeiverDemo/MulticeiverDemo.ino"
+          - "examples/InterruptConfigure/InterruptConfigure.ino"
+          - "examples/encodeRadioDetails/encodeRadioDetails.ino"
+        board:
+          - "teensy31"
+          - "teensy35"
+          - "teensy36"
+          - "teensy40"
+          - "teensy41"
+          - "teensylc"
+          - "genericSTM32F411CE"
+          - "blackpill_f103c8"
+          - "nodemcuv2"
+          - "adafruit_qtpy_esp32s2"
+
+  deploy:
+    name: deploy release asset
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: [validate_lib_json, build]
+    permissions:
+      # needed for uploading release assets
+      contents: write
+    uses: nRF24/.github/.github/workflows/deploy_platformio_artifact.yaml@main
+    secrets: inherit
