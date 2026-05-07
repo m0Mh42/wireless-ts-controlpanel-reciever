@@ -69,6 +69,7 @@ typedef struct transaction_unit
     uint64_t seq;
     uint8_t command;
     uint8_t buttons;
+    uint8_t active_unit;
 } transaction_unit;
 
 float mapfloat(float x, long in_min, long in_max, long out_min, long out_max);

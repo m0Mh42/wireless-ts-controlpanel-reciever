@@ -40,7 +40,7 @@ RF24 radio(CE_PIN, CSN_PIN); // RF24 Radio
 transaction_unit local_transaction_unit;
 uint64_t local_seq = 0;
 ts_status local_ts_status = TS_STAT_OFF;
-uint8_t local_buttons = 0, battery_cap = 0;
+uint8_t local_buttons = 0, battery_cap = 0, local_active_unit = 0;
 bool flag = false;
 
 void setup()
@@ -61,6 +61,10 @@ void loop()
   while (TEST)
   {
     transaction_unit test_transaction_unit;
+    test_transaction_unit.active_unit = 0;
+    test_transaction_unit.buttons = 0;
+    test_transaction_unit.command = COMM_NOTHING;
+    test_transaction_unit.seq = 0;
     bool rx = false;
     while (true)
     {
@@ -71,6 +75,7 @@ void loop()
         {
           rx = true;
           local_seq = 1;
+          Serial.println("Established Communication");
           break;
         }
       }
@@ -91,7 +96,10 @@ void loop()
         radio.read(&test_transaction_unit, sizeof(transaction_unit));
         if (test_transaction_unit.command == COMM_BUTTON && test_transaction_unit.seq == local_seq)
         {
-          Serial.println(test_transaction_unit.buttons);
+          Serial.print("Buttons: ");
+          Serial.print(test_transaction_unit.buttons);
+          Serial.print(" Seq: ");
+          Serial.println((uint32_t)(test_transaction_unit.seq));
           rx = true;
           local_seq++;
         }
@@ -106,34 +114,8 @@ void loop()
       delay(1000);
     }
   }
+
+  // TODO Recieve and Parse and Validate Data
+  // TODO Do GPIO Pin Changes
+  // TODO Connect LCD
 }
-/*if (TEST)
-  {
-    transaction_unit test_transaction_unit;
-    uint64_t local_seq = 0;
-    test_transaction_unit.command = COMM_START_TX;
-    test_transaction_unit.seq = local_seq;
-    test_transaction_unit.buttons = 0U;
-    radio.write(&test_transaction_unit, sizeof(test_transaction_unit));
-    while (true)
-    {
-      test_transaction_unit.command = COMM_BUTTON;
-      test_transaction_unit.seq++;
-      radio.write(&test_transaction_unit, sizeof(test_transaction_unit));
-      if (radio.available())
-      {
-        radio.read(&test_transaction_unit, sizeof(test_transaction_unit));
-        if (test_transaction_unit.command == COMM_ACK)
-        {
-          if (test_transaction_unit.seq != (local_seq + 1))
-          {
-            test_transaction_unit.command = COMM_STOP_TX;
-            test_transaction_unit.seq = 0U;
-            radio.write(&test_transaction_unit, sizeof(test_transaction_unit));
-            break;
-          }
-          continue;
-        }
-      }
-    }
-  }*/

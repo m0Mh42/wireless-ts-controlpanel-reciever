@@ -36,14 +36,6 @@ void radio_setup(RF24 *_radio)
     }
 }
 
-void radio_start_rx(RF24 *_radio, transaction_unit *_transaction_unit, uint64_t *_local_seq)
-{
-    _transaction_unit->buttons = 0;
-    _transaction_unit->command = COMM_START_TX;
-    _transaction_unit->seq = *_local_seq;
-    _radio_sendpacket(_radio, _transaction_unit, _local_seq);
-}
-
 void radio_transact(RF24 *_radio, transaction_unit *_transaction_unit, uint64_t *_local_seq)
 {
     _transaction_unit->seq = *_local_seq;
