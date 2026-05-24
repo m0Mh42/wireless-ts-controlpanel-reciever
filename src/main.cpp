@@ -5,13 +5,17 @@
 #include "header.h"
 #include "radio.h"
 #include "error.h"
+#include "buttons.h"
+#include "lcd.h"
 
 // Local Global-Variables
 RF24 radio(CE_PIN, CSN_PIN); // RF24 Radio
+LCD_Manager lcd_manager; // LCD Manager
 transaction_unit local_transaction_unit;
 ts_status local_ts_status = TS_STAT_OFF;
 uint8_t local_buttons = 0, local_active_unit = 0;
-bool rx = false, ack = true;
+uint16_t buttons;
+bool rx = false, ack = true, button_change = false;
 
 void setup()
 {
@@ -21,6 +25,9 @@ void setup()
     while (!Serial)
       ; // Wait for USB Serial
   }
+
+  // Setup LCD
+  lcd_manager.init();
 
   // Setup Radio
   radio_setup(&radio);
@@ -83,6 +90,7 @@ void loop()
       break;
     case COMM_BUTTON:
       local_buttons = local_transaction_unit.buttons;
+      button_change = true;
       break;
     case COMM_STOP_TX:
       local_active_unit = 0;
@@ -94,6 +102,15 @@ void loop()
     }
   }
 
+  // Process buttons if changed
+  if (button_change)
+  {
+    buttons = buttons_process(local_buttons);
+    button_change = false;
+  }
+
+  // Update LCD Display with current status
+  lcd_manager.update(local_active_unit, buttons, rx, local_ts_status);
+
   // TODO Do GPIO Pin Changes
-  // TODO Connect LCD
 }
