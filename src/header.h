@@ -17,7 +17,7 @@
 #endif
 
 #define CHANNEL 42
-#define DEBUG false
+#define DEBUG true
 #define TEST true
 
 // Battery Voltage Input
@@ -53,7 +53,8 @@ typedef enum commands_enum
     COMM_START_TX = 1,
     COMM_BUTTON = 2,
     COMM_STOP_TX = 4,
-    COMM_ACK = 8
+    COMM_DATA = 8,
+    COMM_ACK = 16
 } commands_enum;
 
 typedef enum ts_status
@@ -66,7 +67,6 @@ typedef enum ts_status
 // Transaction Unit
 typedef struct transaction_unit
 {
-    uint64_t seq;
     uint8_t command;
     uint8_t buttons;
     uint8_t active_unit;
