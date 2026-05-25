@@ -13,7 +13,7 @@ RF24 radio(CE_PIN, CSN_PIN); // RF24 Radio
 LCD_Manager lcd_manager;     // LCD Manager
 transaction_unit local_transaction_unit;
 ts_status local_ts_status = TS_STAT_OFF;
-uint8_t local_buttons = 0, local_active_unit = 0;
+uint8_t active_unit = 0;
 uint16_t buttons;
 bool rx = false, ack = true;
 
@@ -48,7 +48,7 @@ void loop()
       {
         test_transaction_unit.command = COMM_ACK;
         test_transaction_unit.buttons = 0;
-        test_transaction_unit.active_unit = local_active_unit++;
+        test_transaction_unit.active_unit = active_unit++;
         radio_transact(&radio, &test_transaction_unit);
       }
       if (radio_read(&radio, &test_transaction_unit))
@@ -84,17 +84,16 @@ void loop()
     switch (local_transaction_unit.command)
     {
     case COMM_START_TX:
-      local_active_unit = 0;
-      local_buttons = 0;
+      active_unit = 0;
+      buttons = 0;
       local_ts_status = TS_STAT_ON;
       break;
     case COMM_BUTTON:
-      local_buttons = local_transaction_unit.buttons;
-      buttons = buttons_process(local_buttons);
+      buttons = buttons_process(local_transaction_unit.buttons);
       break;
     case COMM_STOP_TX:
-      local_active_unit = 0;
-      local_buttons = 0;
+      active_unit = 0;
+      buttons = 0;
       local_ts_status = TS_STAT_OFF;
       break;
     default:
@@ -103,7 +102,7 @@ void loop()
   }
 
   // Update LCD Display with current status
-  lcd_manager.update(local_active_unit, buttons, rx, local_ts_status);
+  lcd_manager.update(active_unit, buttons, rx, local_ts_status);
 
   // TODO Do GPIO Pin Changes
 }
