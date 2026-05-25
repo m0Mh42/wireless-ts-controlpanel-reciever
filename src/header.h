@@ -39,16 +39,6 @@
 #define BATTERY_FULL_VOLTAGE 12
 #define BATTERY_EMPTY_VOLTAGE 10
 
-// Button Input Pins
-#define P1 1
-#define P2 2
-#define P3 3
-#define P4 4
-#define P5 5
-#define P6 6
-#define P7 7
-#define P8 8
-
 // Device Addresses Enumeration
 enum device_addresses_enum
 {
@@ -84,8 +74,5 @@ typedef struct transaction_unit
     uint8_t buttons;
     uint8_t active_unit;
 } transaction_unit;
-
-float mapfloat(float x, long in_min, long in_max, long out_min, long out_max);
-int mapint(float x, long in_min, long in_max, long out_min, long out_max);
 
 #endif

@@ -10,7 +10,7 @@
 
 // Local Global-Variables
 RF24 radio(CE_PIN, CSN_PIN); // RF24 Radio
-LCD_Manager lcd_manager; // LCD Manager
+LCD_Manager lcd_manager;     // LCD Manager
 transaction_unit local_transaction_unit;
 ts_status local_ts_status = TS_STAT_OFF;
 uint8_t local_buttons = 0, local_active_unit = 0;
