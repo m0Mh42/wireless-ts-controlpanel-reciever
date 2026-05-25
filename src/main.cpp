@@ -7,13 +7,14 @@
 #include "error.h"
 #include "buttons.h"
 #include "lcd.h"
+#include "io.h"
 
 // Local Global-Variables
 RF24 radio(CE_PIN, CSN_PIN); // RF24 Radio
 LCD_Manager lcd_manager;     // LCD Manager
 transaction_unit local_transaction_unit;
 ts_status local_ts_status = TS_STAT_OFF;
-uint8_t active_unit = 0;
+uint8_t active_unit = 0, mux = 0;
 uint16_t buttons;
 bool rx = false, ack = true;
 
@@ -104,5 +105,14 @@ void loop()
   // Update LCD Display with current status
   lcd_manager.update(active_unit, buttons, rx, local_ts_status);
 
-  // TODO Do GPIO Pin Changes
+  // Read active unit and mux
+  active_unit = io_read_active_unit();
+  mux = io_read_encode_mux();
+
+  // Do GPIO pin changes
+  io_write_buttons(mux, buttons);
+
+  // TODO Send ACK packet after recieving and executing button commands. Buttons have to be non-permanent commands
+  //      that get executed and reverted for a period of time.
+  // TODO Send active unit after reading and changing active unit.
 }
