@@ -15,7 +15,7 @@ transaction_unit local_transaction_unit;
 ts_status local_ts_status = TS_STAT_OFF;
 uint8_t local_buttons = 0, local_active_unit = 0;
 uint16_t buttons;
-bool rx = false, ack = true, button_change = false;
+bool rx = false, ack = true;
 
 void setup()
 {
@@ -90,7 +90,7 @@ void loop()
       break;
     case COMM_BUTTON:
       local_buttons = local_transaction_unit.buttons;
-      button_change = true;
+      buttons = buttons_process(local_buttons);
       break;
     case COMM_STOP_TX:
       local_active_unit = 0;
@@ -100,13 +100,6 @@ void loop()
     default:
       break;
     }
-  }
-
-  // Process buttons if changed
-  if (button_change)
-  {
-    buttons = buttons_process(local_buttons);
-    button_change = false;
   }
 
   // Update LCD Display with current status

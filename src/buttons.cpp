@@ -7,7 +7,7 @@ uint16_t buttons_process(uint8_t _buttons)
     {
         if ((_buttons >> (7 - i)) & 0x01)
         {
-            expanded_buttons |= (_buttons & (powtwo(BUTTONS_COLUMNS)) - 1) << (15 - i * BUTTONS_COLUMNS);
+            expanded_buttons |= (_buttons & (powtwo(BUTTONS_COLUMNS) - 1)) << (15 - i * BUTTONS_COLUMNS);
         }
     }
     return expanded_buttons;
