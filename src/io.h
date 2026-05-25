@@ -13,5 +13,6 @@
 #define PLCO_ANILOX
 #define PLCO_CLICHE
 #define PLCO_COLOR
+#define PLCO_FASTSTOP
 
 #endif
