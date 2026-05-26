@@ -14,9 +14,9 @@ RF24 radio(CE_PIN, CSN_PIN); // RF24 Radio
 LCD_Manager lcd_manager;     // LCD Manager
 transaction_unit local_transaction_unit;
 ts_status local_ts_status = TS_STAT_OFF;
-uint8_t active_unit = 0, mux = 0;
+uint8_t active_unit = 0;
 uint16_t buttons;
-bool rx = false, ack = true;
+bool rx = false;
 
 void setup()
 {
@@ -81,7 +81,6 @@ void loop()
   if (radio_read(&radio, &local_transaction_unit))
   {
     rx = true;
-    ack = false;
     switch (local_transaction_unit.command)
     {
     case COMM_START_TX:
@@ -102,17 +101,25 @@ void loop()
     }
   }
 
+  // Do GPIO pin changes
+  // Wait for PLC to multiplex and read all buttons
+  // TODO Buttons have to be non-permanent commands
+  io_write_buttons(buttons);
+
+  // Read active unit
+  active_unit = io_read_active_unit();
+
+  // Send ACK packet after recieving and executing button commands.
+  //      that get executed and reverted for a period of time.
+  if (rx == true)
+  {
+    local_transaction_unit.command = COMM_DATA;
+    local_transaction_unit.active_unit = active_unit;
+    local_transaction_unit.buttons = 0;
+    radio_transact(&radio, &local_transaction_unit);
+    rx = false;
+  }
+
   // Update LCD Display with current status
   lcd_manager.update(active_unit, buttons, rx, local_ts_status);
-
-  // Read active unit and mux
-  active_unit = io_read_active_unit();
-  mux = io_read_encode_mux();
-
-  // Do GPIO pin changes
-  io_write_buttons(mux, buttons);
-
-  // TODO Send ACK packet after recieving and executing button commands. Buttons have to be non-permanent commands
-  //      that get executed and reverted for a period of time.
-  // TODO Send active unit after reading and changing active unit.
 }

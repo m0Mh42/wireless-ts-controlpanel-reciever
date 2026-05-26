@@ -24,6 +24,7 @@
 
 uint8_t io_read_encode_mux();
 uint8_t io_read_active_unit();
-void io_write_buttons(uint8_t _mux, uint16_t _buttons);
+void io_write_buttons(uint16_t _buttons);
+void io_write_faststop(bool _state);
 
 #endif
