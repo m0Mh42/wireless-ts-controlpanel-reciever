@@ -36,10 +36,12 @@ void io_write_buttons(uint16_t _buttons)
             break;
 
         mux = io_read_encode_mux();
+
         if (mux != last_mux)
         {
             mux_times++;
             last_mux = mux;
+
             switch (mux)
             {
             case 0:
@@ -71,6 +73,7 @@ void io_write_buttons(uint16_t _buttons)
                 break;
             }
         }
+        delay(50);
     }
 }
 
