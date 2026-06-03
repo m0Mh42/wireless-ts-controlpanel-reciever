@@ -2,20 +2,16 @@
 
 uint64_t powtwo(uint8_t pow)
 {
-    uint64_t num = 1;
-    for (size_t i = 0; i < pow; i++)
-    {
-        num *= 2;
-    }
-    return num;
+    uint16_t mask = 1 << pow;
+    return mask;
 }
 
 float mapfloat(float x, long in_min, long in_max, long out_min, long out_max)
 {
-    return (float)(x - in_min) * (float)(out_max - out_min) / (float)((float)(in_max - in_min) + out_min);
+    return (float)(x - in_min) * (float)(out_max - out_min) / (float)(in_max - in_min) + out_min;
 }
 
 int mapint(float x, long in_min, long in_max, long out_min, long out_max)
 {
-    return (int)((float)(x - in_min) * (float)(out_max - out_min) / (float)((float)(in_max - in_min) + out_min));
+    return (int)((float)(x - in_min) * (float)(out_max - out_min) / (float)(in_max - in_min) + out_min);
 }

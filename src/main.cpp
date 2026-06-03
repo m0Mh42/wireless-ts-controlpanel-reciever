@@ -6,6 +6,9 @@
 #include "radio.h"
 #include "error.h"
 #include "buttons.h"
+#ifdef TEST
+#include "test_tm1637.h"
+#endif
 #include "lcd.h"
 #include "io.h"
 
@@ -32,6 +35,10 @@ void setup()
 
   // Setup Radio
   radio_setup(&radio);
+
+#ifdef TEST
+  tm1637_init();
+#endif
 }
 
 void loop()
@@ -73,6 +80,9 @@ void loop()
           break;
         }
       }
+#ifdef TEST
+      tm1637_show_status(local_ts_status, test_transaction_unit.active_unit, test_transaction_unit.buttons);
+#endif
       delay(250);
     }
   }

@@ -29,10 +29,6 @@
 #error "Make Config yourself"
 #endif
 
-#define CHANNEL 42
-#define DEBUG true
-#define TEST true
-
 // Battery Voltage Input
 #define BATTERY_INPUT_PIN A0
 #define VOLTAGE_DIVIDER_COEFFICIENT 0.3

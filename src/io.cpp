@@ -73,7 +73,7 @@ void io_write_buttons(uint16_t _buttons)
                 break;
             }
         }
-        delay(50);
+        // delay(50);
     }
 }
 
