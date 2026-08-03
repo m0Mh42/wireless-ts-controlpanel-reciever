@@ -10,8 +10,8 @@
 #define PLCI_MUX3 A2
 #define PLCI_MUX4 A3
 
-#define PLCI_DISPLAYA A4
-#define PLCI_DISPLAYB A5
+#define PLCI_DISPLAYA 0
+#define PLCI_DISPLAYB 1
 #define PLCI_DISPLAYC 2
 #define PLCI_DISPLAYD 3
 

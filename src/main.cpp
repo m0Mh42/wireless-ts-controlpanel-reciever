@@ -10,6 +10,7 @@
 #include "test_tm1637.h"
 #endif
 #include "io.h"
+#include "lcd.h"
 
 // Local Global-Variables
 RF24 radio(CE_PIN, CSN_PIN); // RF24 Radio
@@ -34,6 +35,9 @@ void setup()
 #ifdef TEST
   tm1637_init();
 #endif
+
+  // Setup LCD
+  lcd_init();
 }
 
 void loop()
@@ -122,6 +126,12 @@ void loop()
     local_transaction_unit.active_unit = active_unit;
     local_transaction_unit.buttons = 0;
     radio_transact(&radio, &local_transaction_unit);
+    
+    lcd_update_status(local_ts_status, active_unit, buttons, true);
     rx = false;
+  }
+  else
+  {
+    lcd_update_status(local_ts_status, active_unit, buttons, false);
   }
 }
