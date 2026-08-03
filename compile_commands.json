@@ -1,0 +1,50 @@
+[
+    {
+        "command": "C:\\Users\\m0Mh42\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.MSVCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin\\g++.exe -o .pio\\build\\native\\src\\buttons.o -c -DPLATFORMIO=60119 -D__AVR_ATmega328P__ -DCHANNEL=42 -Iinclude -Itest\\mocks -Isrc src\\buttons.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "src\\buttons.cpp",
+        "output": ".pio\\build\\native\\src\\buttons.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.MSVCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin\\g++.exe -o .pio\\build\\native\\src\\error.o -c -DPLATFORMIO=60119 -D__AVR_ATmega328P__ -DCHANNEL=42 -Iinclude -Itest\\mocks -Isrc src\\error.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "src\\error.cpp",
+        "output": ".pio\\build\\native\\src\\error.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.MSVCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin\\g++.exe -o .pio\\build\\native\\src\\io.o -c -DPLATFORMIO=60119 -D__AVR_ATmega328P__ -DCHANNEL=42 -Iinclude -Itest\\mocks -Isrc src\\io.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "src\\io.cpp",
+        "output": ".pio\\build\\native\\src\\io.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.MSVCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin\\g++.exe -o .pio\\build\\native\\src\\lcd.o -c -DPLATFORMIO=60119 -D__AVR_ATmega328P__ -DCHANNEL=42 -Iinclude -Itest\\mocks -Isrc src\\lcd.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "src\\lcd.cpp",
+        "output": ".pio\\build\\native\\src\\lcd.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.MSVCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin\\g++.exe -o .pio\\build\\native\\src\\main.o -c -DPLATFORMIO=60119 -D__AVR_ATmega328P__ -DCHANNEL=42 -Iinclude -Itest\\mocks -Isrc src\\main.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "src\\main.cpp",
+        "output": ".pio\\build\\native\\src\\main.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.MSVCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin\\g++.exe -o .pio\\build\\native\\src\\radio.o -c -DPLATFORMIO=60119 -D__AVR_ATmega328P__ -DCHANNEL=42 -Iinclude -Itest\\mocks -Isrc src\\radio.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "src\\radio.cpp",
+        "output": ".pio\\build\\native\\src\\radio.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.MSVCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin\\g++.exe -o .pio\\build\\native\\src\\test_tm1637.o -c -DPLATFORMIO=60119 -D__AVR_ATmega328P__ -DCHANNEL=42 -Iinclude -Itest\\mocks -Isrc src\\test_tm1637.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "src\\test_tm1637.cpp",
+        "output": ".pio\\build\\native\\src\\test_tm1637.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.MSVCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin\\g++.exe -o .pio\\build\\native\\src\\utils.o -c -DPLATFORMIO=60119 -D__AVR_ATmega328P__ -DCHANNEL=42 -Iinclude -Itest\\mocks -Isrc src\\utils.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "src\\utils.cpp",
+        "output": ".pio\\build\\native\\src\\utils.o"
+    }
+]

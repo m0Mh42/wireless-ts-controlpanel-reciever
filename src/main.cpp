@@ -9,12 +9,10 @@
 #ifdef TEST
 #include "test_tm1637.h"
 #endif
-#include "lcd.h"
 #include "io.h"
 
 // Local Global-Variables
 RF24 radio(CE_PIN, CSN_PIN); // RF24 Radio
-LCD_Manager lcd_manager;     // LCD Manager
 transaction_unit local_transaction_unit;
 ts_status local_ts_status = TS_STAT_OFF;
 uint8_t active_unit = 0;
@@ -29,9 +27,6 @@ void setup()
     while (!Serial)
       ; // Wait for USB Serial
   }
-
-  // Setup LCD
-  lcd_manager.init();
 
   // Setup Radio
   radio_setup(&radio);
@@ -129,7 +124,4 @@ void loop()
     radio_transact(&radio, &local_transaction_unit);
     rx = false;
   }
-
-  // Update LCD Display with current status
-  lcd_manager.update(active_unit, buttons, rx, local_ts_status);
 }

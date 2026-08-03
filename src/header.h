@@ -29,11 +29,7 @@
 #error "Make Config yourself"
 #endif
 
-// Battery Voltage Input
-#define BATTERY_INPUT_PIN A0
-#define VOLTAGE_DIVIDER_COEFFICIENT 0.3
-#define BATTERY_FULL_VOLTAGE 12
-#define BATTERY_EMPTY_VOLTAGE 10
+
 
 // Device Addresses Enumeration
 enum device_addresses_enum
