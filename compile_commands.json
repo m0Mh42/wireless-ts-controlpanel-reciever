@@ -1,50 +1,404 @@
 [
     {
-        "command": "C:\\Users\\m0Mh42\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.MSVCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin\\g++.exe -o .pio\\build\\native\\src\\buttons.o -c -DPLATFORMIO=60119 -D__AVR_ATmega328P__ -DCHANNEL=42 -Iinclude -Itest\\mocks -Isrc src\\buttons.cpp",
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\FrameworkArduino\\CDC.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\CDC.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\CDC.cpp",
+        "output": ".pio\\build\\uno\\FrameworkArduino\\CDC.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\FrameworkArduino\\HardwareSerial.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\HardwareSerial.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\HardwareSerial.cpp",
+        "output": ".pio\\build\\uno\\FrameworkArduino\\HardwareSerial.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\FrameworkArduino\\HardwareSerial0.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\HardwareSerial0.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\HardwareSerial0.cpp",
+        "output": ".pio\\build\\uno\\FrameworkArduino\\HardwareSerial0.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\FrameworkArduino\\HardwareSerial1.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\HardwareSerial1.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\HardwareSerial1.cpp",
+        "output": ".pio\\build\\uno\\FrameworkArduino\\HardwareSerial1.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\FrameworkArduino\\HardwareSerial2.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\HardwareSerial2.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\HardwareSerial2.cpp",
+        "output": ".pio\\build\\uno\\FrameworkArduino\\HardwareSerial2.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\FrameworkArduino\\HardwareSerial3.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\HardwareSerial3.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\HardwareSerial3.cpp",
+        "output": ".pio\\build\\uno\\FrameworkArduino\\HardwareSerial3.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\FrameworkArduino\\IPAddress.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\IPAddress.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\IPAddress.cpp",
+        "output": ".pio\\build\\uno\\FrameworkArduino\\IPAddress.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\FrameworkArduino\\PluggableUSB.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\PluggableUSB.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\PluggableUSB.cpp",
+        "output": ".pio\\build\\uno\\FrameworkArduino\\PluggableUSB.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\FrameworkArduino\\Print.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\Print.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\Print.cpp",
+        "output": ".pio\\build\\uno\\FrameworkArduino\\Print.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\FrameworkArduino\\Stream.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\Stream.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\Stream.cpp",
+        "output": ".pio\\build\\uno\\FrameworkArduino\\Stream.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\FrameworkArduino\\Tone.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\Tone.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\Tone.cpp",
+        "output": ".pio\\build\\uno\\FrameworkArduino\\Tone.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\FrameworkArduino\\USBCore.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\USBCore.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\USBCore.cpp",
+        "output": ".pio\\build\\uno\\FrameworkArduino\\USBCore.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-gcc.exe -o .pio\\build\\uno\\FrameworkArduino\\WInterrupts.c.o -c -std=gnu11 -fno-fat-lto-objects -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\WInterrupts.c",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\WInterrupts.c",
+        "output": ".pio\\build\\uno\\FrameworkArduino\\WInterrupts.c.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\FrameworkArduino\\WMath.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\WMath.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\WMath.cpp",
+        "output": ".pio\\build\\uno\\FrameworkArduino\\WMath.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\FrameworkArduino\\WString.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\WString.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\WString.cpp",
+        "output": ".pio\\build\\uno\\FrameworkArduino\\WString.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\FrameworkArduino\\abi.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\abi.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\abi.cpp",
+        "output": ".pio\\build\\uno\\FrameworkArduino\\abi.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-gcc.exe -o .pio\\build\\uno\\FrameworkArduino\\hooks.c.o -c -std=gnu11 -fno-fat-lto-objects -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\hooks.c",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\hooks.c",
+        "output": ".pio\\build\\uno\\FrameworkArduino\\hooks.c.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\FrameworkArduino\\main.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\main.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\main.cpp",
+        "output": ".pio\\build\\uno\\FrameworkArduino\\main.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\FrameworkArduino\\new.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\new.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\new.cpp",
+        "output": ".pio\\build\\uno\\FrameworkArduino\\new.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-gcc.exe -o .pio\\build\\uno\\FrameworkArduino\\wiring.c.o -c -std=gnu11 -fno-fat-lto-objects -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\wiring.c",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\wiring.c",
+        "output": ".pio\\build\\uno\\FrameworkArduino\\wiring.c.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-gcc.exe -o .pio\\build\\uno\\FrameworkArduino\\wiring_analog.c.o -c -std=gnu11 -fno-fat-lto-objects -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\wiring_analog.c",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\wiring_analog.c",
+        "output": ".pio\\build\\uno\\FrameworkArduino\\wiring_analog.c.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-gcc.exe -o .pio\\build\\uno\\FrameworkArduino\\wiring_digital.c.o -c -std=gnu11 -fno-fat-lto-objects -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\wiring_digital.c",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\wiring_digital.c",
+        "output": ".pio\\build\\uno\\FrameworkArduino\\wiring_digital.c.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-gcc.exe -mmcu=atmega328p -x assembler-with-cpp -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard -c -o .pio\\build\\uno\\FrameworkArduino\\wiring_pulse.S.o C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\wiring_pulse.S",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\wiring_pulse.S",
+        "output": ".pio\\build\\uno\\FrameworkArduino\\wiring_pulse.S.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-gcc.exe -o .pio\\build\\uno\\FrameworkArduino\\wiring_pulse.c.o -c -std=gnu11 -fno-fat-lto-objects -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\wiring_pulse.c",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\wiring_pulse.c",
+        "output": ".pio\\build\\uno\\FrameworkArduino\\wiring_pulse.c.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-gcc.exe -o .pio\\build\\uno\\FrameworkArduino\\wiring_shift.c.o -c -std=gnu11 -fno-fat-lto-objects -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\wiring_shift.c",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino\\wiring_shift.c",
+        "output": ".pio\\build\\uno\\FrameworkArduino\\wiring_shift.c.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\lib6f6\\SPI\\SPI.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\SPI\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\SPI\\src\\SPI.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\SPI\\src\\SPI.cpp",
+        "output": ".pio\\build\\uno\\lib6f6\\SPI\\SPI.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\libab8\\RF24\\RF24.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Ilib\\RF24 -Ilib\\RF24\\utility -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\SPI\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard lib\\RF24\\RF24.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "lib\\RF24\\RF24.cpp",
+        "output": ".pio\\build\\uno\\libab8\\RF24\\RF24.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\liba16\\Wire\\Wire.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src\\Wire.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src\\Wire.cpp",
+        "output": ".pio\\build\\uno\\liba16\\Wire\\Wire.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-gcc.exe -o .pio\\build\\uno\\liba16\\Wire\\utility\\twi.c.o -c -std=gnu11 -fno-fat-lto-objects -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src\\utility\\twi.c",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "C:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src\\utility\\twi.c",
+        "output": ".pio\\build\\uno\\liba16\\Wire\\utility\\twi.c.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\libba6\\LiquidCrystal_I2C\\LiquidCrystal_I2C.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Ilib\\LiquidCrystal_I2C -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard lib\\LiquidCrystal_I2C\\LiquidCrystal_I2C.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "lib\\LiquidCrystal_I2C\\LiquidCrystal_I2C.cpp",
+        "output": ".pio\\build\\uno\\libba6\\LiquidCrystal_I2C\\LiquidCrystal_I2C.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\lib27c\\TM16xx\\InvertedTM1638.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Ilib\\TM16xx\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard lib\\TM16xx\\src\\InvertedTM1638.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "lib\\TM16xx\\src\\InvertedTM1638.cpp",
+        "output": ".pio\\build\\uno\\lib27c\\TM16xx\\InvertedTM1638.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\lib27c\\TM16xx\\TM1616.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Ilib\\TM16xx\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard lib\\TM16xx\\src\\TM1616.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "lib\\TM16xx\\src\\TM1616.cpp",
+        "output": ".pio\\build\\uno\\lib27c\\TM16xx\\TM1616.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\lib27c\\TM16xx\\TM1618.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Ilib\\TM16xx\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard lib\\TM16xx\\src\\TM1618.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "lib\\TM16xx\\src\\TM1618.cpp",
+        "output": ".pio\\build\\uno\\lib27c\\TM16xx\\TM1618.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\lib27c\\TM16xx\\TM1618Anode.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Ilib\\TM16xx\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard lib\\TM16xx\\src\\TM1618Anode.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "lib\\TM16xx\\src\\TM1618Anode.cpp",
+        "output": ".pio\\build\\uno\\lib27c\\TM16xx\\TM1618Anode.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\lib27c\\TM16xx\\TM1620.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Ilib\\TM16xx\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard lib\\TM16xx\\src\\TM1620.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "lib\\TM16xx\\src\\TM1620.cpp",
+        "output": ".pio\\build\\uno\\lib27c\\TM16xx\\TM1620.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\lib27c\\TM16xx\\TM1621.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Ilib\\TM16xx\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard lib\\TM16xx\\src\\TM1621.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "lib\\TM16xx\\src\\TM1621.cpp",
+        "output": ".pio\\build\\uno\\lib27c\\TM16xx\\TM1621.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\lib27c\\TM16xx\\TM1622.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Ilib\\TM16xx\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard lib\\TM16xx\\src\\TM1622.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "lib\\TM16xx\\src\\TM1622.cpp",
+        "output": ".pio\\build\\uno\\lib27c\\TM16xx\\TM1622.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\lib27c\\TM16xx\\TM1628.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Ilib\\TM16xx\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard lib\\TM16xx\\src\\TM1628.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "lib\\TM16xx\\src\\TM1628.cpp",
+        "output": ".pio\\build\\uno\\lib27c\\TM16xx\\TM1628.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\lib27c\\TM16xx\\TM1630.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Ilib\\TM16xx\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard lib\\TM16xx\\src\\TM1630.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "lib\\TM16xx\\src\\TM1630.cpp",
+        "output": ".pio\\build\\uno\\lib27c\\TM16xx\\TM1630.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\lib27c\\TM16xx\\TM1637.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Ilib\\TM16xx\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard lib\\TM16xx\\src\\TM1637.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "lib\\TM16xx\\src\\TM1637.cpp",
+        "output": ".pio\\build\\uno\\lib27c\\TM16xx\\TM1637.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\lib27c\\TM16xx\\TM1638.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Ilib\\TM16xx\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard lib\\TM16xx\\src\\TM1638.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "lib\\TM16xx\\src\\TM1638.cpp",
+        "output": ".pio\\build\\uno\\lib27c\\TM16xx\\TM1638.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\lib27c\\TM16xx\\TM1638Anode.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Ilib\\TM16xx\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard lib\\TM16xx\\src\\TM1638Anode.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "lib\\TM16xx\\src\\TM1638Anode.cpp",
+        "output": ".pio\\build\\uno\\lib27c\\TM16xx\\TM1638Anode.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\lib27c\\TM16xx\\TM1638QYF.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Ilib\\TM16xx\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard lib\\TM16xx\\src\\TM1638QYF.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "lib\\TM16xx\\src\\TM1638QYF.cpp",
+        "output": ".pio\\build\\uno\\lib27c\\TM16xx\\TM1638QYF.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\lib27c\\TM16xx\\TM1640.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Ilib\\TM16xx\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard lib\\TM16xx\\src\\TM1640.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "lib\\TM16xx\\src\\TM1640.cpp",
+        "output": ".pio\\build\\uno\\lib27c\\TM16xx\\TM1640.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\lib27c\\TM16xx\\TM1640Anode.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Ilib\\TM16xx\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard lib\\TM16xx\\src\\TM1640Anode.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "lib\\TM16xx\\src\\TM1640Anode.cpp",
+        "output": ".pio\\build\\uno\\lib27c\\TM16xx\\TM1640Anode.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\lib27c\\TM16xx\\TM1640Anode8S16D.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Ilib\\TM16xx\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard lib\\TM16xx\\src\\TM1640Anode8S16D.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "lib\\TM16xx\\src\\TM1640Anode8S16D.cpp",
+        "output": ".pio\\build\\uno\\lib27c\\TM16xx\\TM1640Anode8S16D.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\lib27c\\TM16xx\\TM1650.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Ilib\\TM16xx\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard lib\\TM16xx\\src\\TM1650.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "lib\\TM16xx\\src\\TM1650.cpp",
+        "output": ".pio\\build\\uno\\lib27c\\TM16xx\\TM1650.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\lib27c\\TM16xx\\TM1652.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Ilib\\TM16xx\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard lib\\TM16xx\\src\\TM1652.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "lib\\TM16xx\\src\\TM1652.cpp",
+        "output": ".pio\\build\\uno\\lib27c\\TM16xx\\TM1652.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\lib27c\\TM16xx\\TM1668.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Ilib\\TM16xx\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard lib\\TM16xx\\src\\TM1668.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "lib\\TM16xx\\src\\TM1668.cpp",
+        "output": ".pio\\build\\uno\\lib27c\\TM16xx\\TM1668.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\lib27c\\TM16xx\\TM1680.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Ilib\\TM16xx\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard lib\\TM16xx\\src\\TM1680.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "lib\\TM16xx\\src\\TM1680.cpp",
+        "output": ".pio\\build\\uno\\lib27c\\TM16xx\\TM1680.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\lib27c\\TM16xx\\TM16xx.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Ilib\\TM16xx\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard lib\\TM16xx\\src\\TM16xx.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "lib\\TM16xx\\src\\TM16xx.cpp",
+        "output": ".pio\\build\\uno\\lib27c\\TM16xx\\TM16xx.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\lib27c\\TM16xx\\TM16xxButtons.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Ilib\\TM16xx\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard lib\\TM16xx\\src\\TM16xxButtons.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "lib\\TM16xx\\src\\TM16xxButtons.cpp",
+        "output": ".pio\\build\\uno\\lib27c\\TM16xx\\TM16xxButtons.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\lib27c\\TM16xx\\TM16xxDisplay.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Ilib\\TM16xx\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard lib\\TM16xx\\src\\TM16xxDisplay.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "lib\\TM16xx\\src\\TM16xxDisplay.cpp",
+        "output": ".pio\\build\\uno\\lib27c\\TM16xx\\TM16xxDisplay.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\lib27c\\TM16xx\\TM16xxIC.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Ilib\\TM16xx\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard lib\\TM16xx\\src\\TM16xxIC.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "lib\\TM16xx\\src\\TM16xxIC.cpp",
+        "output": ".pio\\build\\uno\\lib27c\\TM16xx\\TM16xxIC.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\lib27c\\TM16xx\\TM16xxICanode.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Ilib\\TM16xx\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard lib\\TM16xx\\src\\TM16xxICanode.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "lib\\TM16xx\\src\\TM16xxICanode.cpp",
+        "output": ".pio\\build\\uno\\lib27c\\TM16xx\\TM16xxICanode.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\lib27c\\TM16xx\\TM16xxMatrix.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Ilib\\TM16xx\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard lib\\TM16xx\\src\\TM16xxMatrix.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "lib\\TM16xx\\src\\TM16xxMatrix.cpp",
+        "output": ".pio\\build\\uno\\lib27c\\TM16xx\\TM16xxMatrix.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\lib27c\\TM16xx\\TM16xxMatrix16.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Ilib\\TM16xx\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard lib\\TM16xx\\src\\TM16xxMatrix16.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "lib\\TM16xx\\src\\TM16xxMatrix16.cpp",
+        "output": ".pio\\build\\uno\\lib27c\\TM16xx\\TM16xxMatrix16.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\lib27c\\TM16xx\\TM16xxMatrixGFX.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Ilib\\TM16xx\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard lib\\TM16xx\\src\\TM16xxMatrixGFX.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "lib\\TM16xx\\src\\TM16xxMatrixGFX.cpp",
+        "output": ".pio\\build\\uno\\lib27c\\TM16xx\\TM16xxMatrixGFX.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\lib27c\\TM16xx\\TMHT16K33.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Ilib\\TM16xx\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard lib\\TM16xx\\src\\TMHT16K33.cpp",
+        "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
+        "file": "lib\\TM16xx\\src\\TMHT16K33.cpp",
+        "output": ".pio\\build\\uno\\lib27c\\TM16xx\\TMHT16K33.cpp.o"
+    },
+    {
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\src\\buttons.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Iinclude -Isrc -Ilib\\TM16xx\\src -Ilib\\LiquidCrystal_I2C -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -Ilib\\RF24 -Ilib\\RF24\\utility -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\SPI\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard src\\buttons.cpp",
         "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
         "file": "src\\buttons.cpp",
-        "output": ".pio\\build\\native\\src\\buttons.o"
+        "output": ".pio\\build\\uno\\src\\buttons.cpp.o"
     },
     {
-        "command": "C:\\Users\\m0Mh42\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.MSVCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin\\g++.exe -o .pio\\build\\native\\src\\error.o -c -DPLATFORMIO=60119 -D__AVR_ATmega328P__ -DCHANNEL=42 -Iinclude -Itest\\mocks -Isrc src\\error.cpp",
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\src\\error.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Iinclude -Isrc -Ilib\\TM16xx\\src -Ilib\\LiquidCrystal_I2C -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -Ilib\\RF24 -Ilib\\RF24\\utility -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\SPI\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard src\\error.cpp",
         "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
         "file": "src\\error.cpp",
-        "output": ".pio\\build\\native\\src\\error.o"
+        "output": ".pio\\build\\uno\\src\\error.cpp.o"
     },
     {
-        "command": "C:\\Users\\m0Mh42\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.MSVCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin\\g++.exe -o .pio\\build\\native\\src\\io.o -c -DPLATFORMIO=60119 -D__AVR_ATmega328P__ -DCHANNEL=42 -Iinclude -Itest\\mocks -Isrc src\\io.cpp",
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\src\\io.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Iinclude -Isrc -Ilib\\TM16xx\\src -Ilib\\LiquidCrystal_I2C -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -Ilib\\RF24 -Ilib\\RF24\\utility -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\SPI\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard src\\io.cpp",
         "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
         "file": "src\\io.cpp",
-        "output": ".pio\\build\\native\\src\\io.o"
+        "output": ".pio\\build\\uno\\src\\io.cpp.o"
     },
     {
-        "command": "C:\\Users\\m0Mh42\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.MSVCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin\\g++.exe -o .pio\\build\\native\\src\\lcd.o -c -DPLATFORMIO=60119 -D__AVR_ATmega328P__ -DCHANNEL=42 -Iinclude -Itest\\mocks -Isrc src\\lcd.cpp",
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\src\\lcd.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Iinclude -Isrc -Ilib\\TM16xx\\src -Ilib\\LiquidCrystal_I2C -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -Ilib\\RF24 -Ilib\\RF24\\utility -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\SPI\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard src\\lcd.cpp",
         "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
         "file": "src\\lcd.cpp",
-        "output": ".pio\\build\\native\\src\\lcd.o"
+        "output": ".pio\\build\\uno\\src\\lcd.cpp.o"
     },
     {
-        "command": "C:\\Users\\m0Mh42\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.MSVCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin\\g++.exe -o .pio\\build\\native\\src\\main.o -c -DPLATFORMIO=60119 -D__AVR_ATmega328P__ -DCHANNEL=42 -Iinclude -Itest\\mocks -Isrc src\\main.cpp",
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\src\\main.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Iinclude -Isrc -Ilib\\TM16xx\\src -Ilib\\LiquidCrystal_I2C -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -Ilib\\RF24 -Ilib\\RF24\\utility -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\SPI\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard src\\main.cpp",
         "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
         "file": "src\\main.cpp",
-        "output": ".pio\\build\\native\\src\\main.o"
+        "output": ".pio\\build\\uno\\src\\main.cpp.o"
     },
     {
-        "command": "C:\\Users\\m0Mh42\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.MSVCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin\\g++.exe -o .pio\\build\\native\\src\\radio.o -c -DPLATFORMIO=60119 -D__AVR_ATmega328P__ -DCHANNEL=42 -Iinclude -Itest\\mocks -Isrc src\\radio.cpp",
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\src\\radio.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Iinclude -Isrc -Ilib\\TM16xx\\src -Ilib\\LiquidCrystal_I2C -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -Ilib\\RF24 -Ilib\\RF24\\utility -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\SPI\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard src\\radio.cpp",
         "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
         "file": "src\\radio.cpp",
-        "output": ".pio\\build\\native\\src\\radio.o"
+        "output": ".pio\\build\\uno\\src\\radio.cpp.o"
     },
     {
-        "command": "C:\\Users\\m0Mh42\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.MSVCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin\\g++.exe -o .pio\\build\\native\\src\\test_tm1637.o -c -DPLATFORMIO=60119 -D__AVR_ATmega328P__ -DCHANNEL=42 -Iinclude -Itest\\mocks -Isrc src\\test_tm1637.cpp",
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\src\\test_tm1637.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Iinclude -Isrc -Ilib\\TM16xx\\src -Ilib\\LiquidCrystal_I2C -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -Ilib\\RF24 -Ilib\\RF24\\utility -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\SPI\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard src\\test_tm1637.cpp",
         "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
         "file": "src\\test_tm1637.cpp",
-        "output": ".pio\\build\\native\\src\\test_tm1637.o"
+        "output": ".pio\\build\\uno\\src\\test_tm1637.cpp.o"
     },
     {
-        "command": "C:\\Users\\m0Mh42\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.MSVCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin\\g++.exe -o .pio\\build\\native\\src\\utils.o -c -DPLATFORMIO=60119 -D__AVR_ATmega328P__ -DCHANNEL=42 -Iinclude -Itest\\mocks -Isrc src\\utils.cpp",
+        "command": "C:\\Users\\m0Mh42\\.platformio\\packages\\toolchain-atmelavr\\bin\\avr-g++.exe -o .pio\\build\\uno\\src\\utils.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -Os -ffunction-sections -fdata-sections -mmcu=atmega328p -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60119 -DARDUINO_AVR_UNO -DDEBUG=0 -DTEST=0 -DCHANNEL=42 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Iinclude -Isrc -Ilib\\TM16xx\\src -Ilib\\LiquidCrystal_I2C -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\Wire\\src -Ilib\\RF24 -Ilib\\RF24\\utility -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\libraries\\SPI\\src -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\cores\\arduino -IC:\\Users\\m0Mh42\\.platformio\\packages\\framework-arduino-avr\\variants\\standard src\\utils.cpp",
         "directory": "D:\\Projects\\wireless-uteco-controlpanel\\program\\reciever\\rf24-uteco-ts-reciever",
         "file": "src\\utils.cpp",
-        "output": ".pio\\build\\native\\src\\utils.o"
+        "output": ".pio\\build\\uno\\src\\utils.cpp.o"
     }
 ]
