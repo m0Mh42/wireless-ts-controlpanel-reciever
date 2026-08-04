@@ -1,11 +1,11 @@
-#include <Arduino.h>
-#include <SPI.h>
-#include <nRF24L01.h>
-#include <RF24.h>
+#include "buttons.h"
+#include "error.h"
 #include "header.h"
 #include "radio.h"
-#include "error.h"
-#include "buttons.h"
+#include <Arduino.h>
+#include <RF24.h>
+#include <SPI.h>
+#include <nRF24L01.h>
 #ifdef TEST
 #include "test_tm1637.h"
 #endif
@@ -20,10 +20,8 @@ uint8_t active_unit = 0;
 uint16_t buttons;
 bool rx = false;
 
-void setup()
-{
-  if (DEBUG || TEST)
-  {
+void setup() {
+  if (DEBUG || TEST) {
     Serial.begin(9600);
     while (!Serial)
       ; // Wait for USB Serial
@@ -40,58 +38,47 @@ void setup()
   lcd_init();
 }
 
-void loop()
-{
-  while (TEST)
-  {
+void loop() {
+  while (TEST) {
     transaction_unit test_transaction_unit;
     test_transaction_unit.active_unit = 0;
     test_transaction_unit.buttons = 0;
     test_transaction_unit.command = COMM_NOTHING;
     rx = false;
-    while (true)
-    {
-      if (rx)
-      {
+    while (true) {
+      if (rx) {
         test_transaction_unit.command = COMM_ACK;
         test_transaction_unit.buttons = 0;
         test_transaction_unit.active_unit = active_unit++;
         radio_transact(&radio, &test_transaction_unit);
       }
-      if (radio_read(&radio, &test_transaction_unit))
-      {
-        if (test_transaction_unit.command == COMM_START_TX)
-        {
+      if (radio_read(&radio, &test_transaction_unit)) {
+        if (test_transaction_unit.command == COMM_START_TX) {
           rx = true;
           Serial.println("Established Communication");
           break;
-        }
-        else if (test_transaction_unit.command == COMM_BUTTON)
-        {
+        } else if (test_transaction_unit.command == COMM_BUTTON) {
           Serial.print("Data: ");
           Serial.println(test_transaction_unit.buttons);
           rx = true;
-        }
-        else if (test_transaction_unit.command == COMM_STOP_TX)
-        {
+        } else if (test_transaction_unit.command == COMM_STOP_TX) {
           Serial.println("Stop RX");
           rx = true;
           break;
         }
       }
 #ifdef TEST
-      tm1637_show_status(local_ts_status, test_transaction_unit.active_unit, test_transaction_unit.buttons);
+      tm1637_show_status(local_ts_status, test_transaction_unit.active_unit,
+                         test_transaction_unit.buttons);
 #endif
       delay(250);
     }
   }
 
   // Recieve and Parse and Validate Data
-  if (radio_read(&radio, &local_transaction_unit))
-  {
+  if (radio_read(&radio, &local_transaction_unit)) {
     rx = true;
-    switch (local_transaction_unit.command)
-    {
+    switch (local_transaction_unit.command) {
     case COMM_START_TX:
       active_unit = 0;
       buttons = 0;
@@ -120,18 +107,15 @@ void loop()
 
   // Send ACK packet after recieving and executing button commands.
   //      that get executed and reverted for a period of time.
-  if (rx == true)
-  {
+  if (rx == true) {
     local_transaction_unit.command = COMM_DATA;
     local_transaction_unit.active_unit = active_unit;
     local_transaction_unit.buttons = 0;
     radio_transact(&radio, &local_transaction_unit);
-    
+
     lcd_update_status(local_ts_status, active_unit, buttons, true);
     rx = false;
-  }
-  else
-  {
+  } else {
     lcd_update_status(local_ts_status, active_unit, buttons, false);
   }
 }
