@@ -1,121 +1,96 @@
-#include "buttons.h"
-#include "error.h"
-#include "header.h"
-#include "radio.h"
 #include <Arduino.h>
-#include <RF24.h>
 #include <SPI.h>
+#include <RF24.h>
 #include <nRF24L01.h>
-#ifdef TEST
-#include "test_tm1637.h"
-#endif
+#include "header.h"
+#include "safety_protocol.h"
+#include "radio.h"
 #include "io.h"
 #include "lcd.h"
+#include "buttons.h"
 
-// Local Global-Variables
-RF24 radio(CE_PIN, CSN_PIN); // RF24 Radio
-transaction_unit local_transaction_unit;
+#define SAFETY_WATCHDOG_TIMEOUT_MS 100UL
+#define CHANNEL_HOP_SEARCH_TIMEOUT_MS 500UL
+
+// Global objects
+RF24 radio(CE_PIN, CSN_PIN);
+SafetyFrame rx_frame;
 ts_status local_ts_status = TS_STAT_OFF;
 uint8_t active_unit = 0;
-uint16_t buttons;
-bool rx = false;
+uint16_t buttons = 0;
+uint32_t last_valid_sequence = 0;
+uint32_t rx_tx_sequence = 1;
+unsigned long last_valid_packet_ms = 0;
+unsigned long last_hop_attempt_ms = 0;
+bool link_healthy = false;
 
 void setup() {
-  if (DEBUG || TEST) {
+#if DEBUG
     Serial.begin(9600);
     while (!Serial)
-      ; // Wait for USB Serial
-  }
-
-  // Setup Radio
-  radio_setup(&radio);
-
-#ifdef TEST
-  tm1637_init();
+        ;
+    Serial.println(F("[SYSTEM] UTECO Receiver Safety Node Initializing..."));
 #endif
 
-  // Setup LCD
-  lcd_init();
+    // Initialize PLC IO subsystem
+    io_init();
+
+    // Initialize LCD
+    lcd_init();
+
+    // Initialize RF24 radio
+    radio_setup(&radio);
+
+#if DEBUG
+    Serial.println(F("[SYSTEM] Receiver Node Ready. Listening for Black Channel frames."));
+#endif
 }
 
 void loop() {
-  while (TEST) {
-    transaction_unit test_transaction_unit;
-    test_transaction_unit.active_unit = 0;
-    test_transaction_unit.buttons = 0;
-    test_transaction_unit.command = COMM_NOTHING;
-    rx = false;
-    while (true) {
-      if (rx) {
-        test_transaction_unit.command = COMM_ACK;
-        test_transaction_unit.buttons = 0;
-        test_transaction_unit.active_unit = active_unit++;
-        radio_transact(&radio, &test_transaction_unit);
-      }
-      if (radio_read(&radio, &test_transaction_unit)) {
-        if (test_transaction_unit.command == COMM_START_TX) {
-          rx = true;
-          Serial.println("Established Communication");
-          break;
-        } else if (test_transaction_unit.command == COMM_BUTTON) {
-          Serial.print("Data: ");
-          Serial.println(test_transaction_unit.buttons);
-          rx = true;
-        } else if (test_transaction_unit.command == COMM_STOP_TX) {
-          Serial.println("Stop RX");
-          rx = true;
-          break;
+    unsigned long now = millis();
+
+    // 1. Read Active Printing Unit from PLC inputs
+    active_unit = io_read_active_unit();
+
+    // 2. Read and Validate Incoming Black Channel Safety Frames
+    if (radio_read_frame(&radio, &rx_frame, &last_valid_sequence)) {
+        last_valid_packet_ms = now;
+        link_healthy = true;
+
+        buttons = rx_frame.payload.buttons_primary;
+        local_ts_status = (ts_status)rx_frame.payload.status_flags;
+
+        // Check if E-Stop button is pressed in payload
+        if ((buttons & BUTTON_ESTOP_ACTIVE) || (rx_frame.frame_type == FrameType::ESTOP_ACTIVE)) {
+            io_write_faststop(true);
+        } else {
+            io_write_faststop(false);
         }
-      }
-#ifdef TEST
-      tm1637_show_status(local_ts_status, test_transaction_unit.active_unit,
-                         test_transaction_unit.buttons);
-#endif
-      delay(250);
+
+        // Send telemetry / ACK frame back to transmitter with active_unit
+        radio_send_telemetry(&radio, active_unit, local_ts_status, rx_tx_sequence++);
     }
-  }
 
-  // Recieve and Parse and Validate Data
-  if (radio_read(&radio, &local_transaction_unit)) {
-    rx = true;
-    switch (local_transaction_unit.command) {
-    case COMM_START_TX:
-      active_unit = 0;
-      buttons = 0;
-      local_ts_status = TS_STAT_ON;
-      break;
-    case COMM_BUTTON:
-      buttons = buttons_process(local_transaction_unit.buttons);
-      break;
-    case COMM_STOP_TX:
-      active_unit = 0;
-      buttons = 0;
-      local_ts_status = TS_STAT_OFF;
-      break;
-    default:
-      break;
+    // 3. Safety Watchdog Timeout Check (100 ms)
+    unsigned long elapsed = now - last_valid_packet_ms;
+    if (elapsed > SAFETY_WATCHDOG_TIMEOUT_MS) {
+        link_healthy = false;
+        // User directive: Zero all button outputs when signal is lost, do not trip faststop
+        buttons = 0;
+        io_clear_all_buttons();
+
+        // If communication lost for > 500 ms, search next Wi-Fi guard channel
+        if (now - last_hop_attempt_ms > CHANNEL_HOP_SEARCH_TIMEOUT_MS) {
+            radio_hop_next_channel(&radio);
+            last_hop_attempt_ms = now;
+        }
+    } else {
+        // Healthy link: multiplex button outputs to PLC
+        io_write_buttons(buttons);
     }
-  }
 
-  // Do GPIO pin changes
-  // Wait for PLC to multiplex and read all buttons
-  // TODO Buttons have to be non-permanent commands
-  io_write_buttons(buttons);
+    // 4. Update LCD telemetry screen
+    lcd_update_status(local_ts_status, active_unit, buttons, link_healthy);
 
-  // Read active unit
-  active_unit = io_read_active_unit();
-
-  // Send ACK packet after recieving and executing button commands.
-  //      that get executed and reverted for a period of time.
-  if (rx == true) {
-    local_transaction_unit.command = COMM_DATA;
-    local_transaction_unit.active_unit = active_unit;
-    local_transaction_unit.buttons = 0;
-    radio_transact(&radio, &local_transaction_unit);
-
-    lcd_update_status(local_ts_status, active_unit, buttons, true);
-    rx = false;
-  } else {
-    lcd_update_status(local_ts_status, active_unit, buttons, false);
-  }
+    delay(2);
 }

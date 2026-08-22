@@ -1,4 +1,5 @@
 #include "lcd.h"
+#include "radio.h"
 
 // Set the LCD address to 0x27 for a 20 chars and 4 line display
 LiquidCrystal_I2C lcd(0x27, 20, 4); 
@@ -8,27 +9,41 @@ void lcd_init() {
     lcd.backlight();
     lcd.clear();
     lcd.setCursor(0, 0);
-    lcd.print("Receiver Node");
-    lcd.setCursor(15, 0);
-    lcd.print("L: NO");
+    lcd.print("UTECO RX Safe Node  ");
+    lcd.setCursor(0, 1);
+    lcd.print("Initializing Radio..");
+    delay(500);
+    lcd.clear();
 }
 
-void lcd_update_status(ts_status status, uint8_t active_unit, uint16_t buttons, bool rx) {
+void lcd_update_status(ts_status status, uint8_t active_unit, uint16_t buttons, bool link_healthy) {
     static ts_status last_status = (ts_status)-1;
     static uint8_t last_unit = 255;
     static uint16_t last_buttons = 0xFFFF;
-    static bool last_rx = false;
-    static unsigned long last_rx_time = 0;
-    if (rx) {
-        last_rx_time = millis();
-    }
-    bool link_ok = (millis() - last_rx_time) < 1000;
+    static bool last_link = false;
+    static uint8_t last_channel = 255;
+    static uint8_t last_lqi = 255;
 
-    if (last_rx != link_ok) {
-        lcd.setCursor(15, 0);
-        if (link_ok) lcd.print("L: OK");
-        else         lcd.print("L: NO");
-        last_rx = link_ok;
+    uint8_t cur_chan = radio_get_channel();
+    uint8_t cur_lqi = radio_get_lqi();
+
+    if (last_link != link_healthy || last_channel != cur_chan || last_lqi != cur_lqi) {
+        lcd.setCursor(0, 0);
+        if (link_healthy) {
+            lcd.print("L:OK ");
+        } else {
+            lcd.print("L:NO ");
+        }
+        lcd.print("Ch:");
+        if (cur_chan < 10) lcd.print("0");
+        lcd.print(cur_chan);
+        lcd.print(" Q:");
+        lcd.print(cur_lqi);
+        lcd.print("%   ");
+
+        last_link = link_healthy;
+        last_channel = cur_chan;
+        last_lqi = cur_lqi;
     }
 
     if (last_status != status) {
@@ -38,6 +53,7 @@ void lcd_update_status(ts_status status, uint8_t active_unit, uint16_t buttons, 
         if (status == TS_STAT_ON) lcd.print("ON");
         else if (status == TS_STAT_OFF) lcd.print("OFF");
         else if (status == TS_STAT_BATTERYLOW) lcd.print("BAT_LOW");
+        else if (status == TS_STAT_FAULT) lcd.print("FAULT");
         last_status = status;
     }
 
@@ -51,8 +67,11 @@ void lcd_update_status(ts_status status, uint8_t active_unit, uint16_t buttons, 
 
     if (last_buttons != buttons) {
         lcd.setCursor(0, 3);
-        lcd.print("Buttons:            ");
-        lcd.setCursor(9, 3);
+        lcd.print("Buttons: 0x         ");
+        lcd.setCursor(11, 3);
+        if (buttons < 0x1000) lcd.print("0");
+        if (buttons < 0x0100) lcd.print("0");
+        if (buttons < 0x0010) lcd.print("0");
         lcd.print(buttons, HEX);
         last_buttons = buttons;
     }

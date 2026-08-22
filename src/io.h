@@ -22,9 +22,11 @@
 
 #define PLCO_FASTSTOP 8
 
+void io_init();
 uint8_t io_read_encode_mux();
 uint8_t io_read_active_unit();
 void io_write_buttons(uint16_t _buttons);
 void io_write_faststop(bool _state);
+void io_clear_all_buttons();
 
 #endif
