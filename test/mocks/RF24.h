@@ -13,6 +13,16 @@
 #define RF24_1MBPS   1
 #define RF24_2MBPS   2
 
+typedef enum {
+    RF24_CRC_DISABLED = 0,
+    RF24_CRC_8,
+    RF24_CRC_16
+} rf24_crclength_e;
+
+#ifndef SAFETY_FRAME_SIZE
+#define SAFETY_FRAME_SIZE 32
+#endif
+
 // Mock state — set/check by tests
 extern bool     mock_rf24_begin_called;
 extern uint8_t  mock_rf24_pa_level;
@@ -30,16 +40,21 @@ extern uint8_t  mock_rf24_retries_delay;
 extern uint8_t  mock_rf24_retries_count;
 extern uint8_t  mock_rf24_payload_size;
 extern bool     mock_rf24_listening;
+extern bool     mock_rf24_ack_payload_enabled;
+extern bool     mock_rf24_dynamic_payloads_enabled;
+extern bool     mock_rf24_ack_payload_available;
 
 #define MOCK_RF24_BUF_SIZE 64
 extern uint8_t  mock_rf24_tx_buf[MOCK_RF24_BUF_SIZE];
 extern uint8_t  mock_rf24_tx_len;
 extern uint8_t  mock_rf24_rx_buf[MOCK_RF24_BUF_SIZE];
 extern uint8_t  mock_rf24_rx_len;
+extern uint8_t  mock_rf24_ack_payload_buf[MOCK_RF24_BUF_SIZE];
+extern uint8_t  mock_rf24_ack_payload_len;
 
 class RF24 {
 public:
-    RF24(uint8_t ce_pin, uint8_t csn_pin) {}
+    RF24(uint8_t ce_pin, uint8_t csn_pin, uint32_t spi_speed = 4000000UL) {}
 
     void begin() { mock_rf24_begin_called = true; }
 
@@ -73,6 +88,32 @@ public:
         mock_rf24_payload_size = size;
     }
 
+    void setCRCLength(rf24_crclength_e length) {}
+
+    void enableAckPayload() { mock_rf24_ack_payload_enabled = true; }
+    void enableDynamicPayloads() { mock_rf24_dynamic_payloads_enabled = true; }
+    void disableDynamicPayloads() { mock_rf24_dynamic_payloads_enabled = false; }
+
+    bool writeAckPayload(uint8_t pipe, const void* buf, uint8_t len) {
+        if (buf && len > 0 && len <= MOCK_RF24_BUF_SIZE) {
+            memcpy(mock_rf24_ack_payload_buf, buf, len);
+            mock_rf24_ack_payload_len = len;
+            mock_rf24_ack_payload_available = true;
+            memcpy(mock_rf24_tx_buf, buf, len);
+            mock_rf24_tx_len = len;
+        }
+        return true;
+    }
+
+    bool isAckPayloadAvailable() { return mock_rf24_ack_payload_available; }
+    void flush_tx() { mock_rf24_tx_len = 0; }
+    void flush_rx() { mock_rf24_rx_len = 0; }
+    uint8_t getDynamicPayloadSize() {
+        if (mock_rf24_rx_len > 0) return mock_rf24_rx_len;
+        if (mock_rf24_payload_size > 0) return mock_rf24_payload_size;
+        return 8;
+    }
+
     void startListening() { mock_rf24_listening = true; }
 
     void stopListening() { mock_rf24_listening = false; }
@@ -93,6 +134,9 @@ public:
         if (buf && len > 0 && len <= MOCK_RF24_BUF_SIZE) {
             memcpy(buf, mock_rf24_rx_buf, len);
             mock_rf24_rx_len = len;
+            mock_rf24_available = false;
         }
     }
+
+    void printDetails() {}
 };

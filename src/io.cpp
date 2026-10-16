@@ -8,11 +8,11 @@ void io_init()
     pinMode(PLCI_MUX3, INPUT);
     pinMode(PLCI_MUX4, INPUT);
 
-    // Configure PLC active unit BCD display inputs
-    pinMode(PLCI_DISPLAYA, INPUT);
-    pinMode(PLCI_DISPLAYB, INPUT);
-    pinMode(PLCI_DISPLAYC, INPUT);
-    pinMode(PLCI_DISPLAYD, INPUT);
+    // Configure PLC active unit BCD display inputs (pullup ensures stable HIGH=15 on bench when open)
+    pinMode(PLCI_DISPLAYA, INPUT_PULLUP);
+    pinMode(PLCI_DISPLAYB, INPUT_PULLUP);
+    pinMode(PLCI_DISPLAYC, INPUT_PULLUP);
+    pinMode(PLCI_DISPLAYD, INPUT_PULLUP);
 
     // Configure PLC button outputs
     pinMode(PLCO_REGISTER, OUTPUT);
@@ -23,8 +23,12 @@ void io_init()
     // Configure FASTSTOP safety output
     pinMode(PLCO_FASTSTOP, OUTPUT);
 
+    // Configure PLC ENABLE safety output
+    pinMode(PLCO_ENABLE, OUTPUT);
+
     io_clear_all_buttons();
     io_write_faststop(false); // Normal running state on boot
+    io_write_enable(false);   // Disabled on boot until link established
 }
 
 uint8_t io_read_encode_mux()
@@ -42,12 +46,21 @@ uint8_t io_read_encode_mux()
 
 uint8_t io_read_active_unit()
 {
-    uint8_t active_unit = 0;
-    active_unit += (digitalRead(PLCI_DISPLAYA) == HIGH ? 1 : 0);
-    active_unit += (digitalRead(PLCI_DISPLAYB) == HIGH ? 2 : 0);
-    active_unit += (digitalRead(PLCI_DISPLAYC) == HIGH ? 4 : 0);
-    active_unit += (digitalRead(PLCI_DISPLAYD) == HIGH ? 8 : 0);
-    return active_unit;
+    uint8_t u1 = 0;
+    u1 += (digitalRead(PLCI_DISPLAYA) == HIGH ? 1 : 0);
+    u1 += (digitalRead(PLCI_DISPLAYB) == HIGH ? 2 : 0);
+    u1 += (digitalRead(PLCI_DISPLAYC) == HIGH ? 4 : 0);
+    u1 += (digitalRead(PLCI_DISPLAYD) == HIGH ? 8 : 0);
+
+    delayMicroseconds(50);
+
+    uint8_t u2 = 0;
+    u2 += (digitalRead(PLCI_DISPLAYA) == HIGH ? 1 : 0);
+    u2 += (digitalRead(PLCI_DISPLAYB) == HIGH ? 2 : 0);
+    u2 += (digitalRead(PLCI_DISPLAYC) == HIGH ? 4 : 0);
+    u2 += (digitalRead(PLCI_DISPLAYD) == HIGH ? 8 : 0);
+
+    return (u1 == u2) ? u1 : u2;
 }
 
 void io_clear_all_buttons()
@@ -105,4 +118,9 @@ void io_write_buttons(uint16_t _buttons)
 void io_write_faststop(bool _state)
 {
     digitalWrite(PLCO_FASTSTOP, _state ? HIGH : LOW);
+}
+
+void io_write_enable(bool _state)
+{
+    digitalWrite(PLCO_ENABLE, _state ? HIGH : LOW);
 }

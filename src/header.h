@@ -2,11 +2,21 @@
 #define _H_HEADER 1
 
 #include <Arduino.h>
-#include "safety_protocol.h"
+#include "protocol.h"
+
+// Default RF Power Level: RF24_PA_MAX for maximum distance across industrial halls
+#ifndef RF24_PA_LEVEL_DEFAULT
+#define RF24_PA_LEVEL_DEFAULT RF24_PA_MAX
+#endif
+
+// Default On-Air Data Rate: RF24_1MBPS for standard robust turnaround, or RF24_250KBPS for maximum sensitivity
+#ifndef RF24_DATARATE_DEFAULT
+#define RF24_DATARATE_DEFAULT RF24_1MBPS
+#endif
 
 #if defined(__AVR_ATmega328P__) || defined(__AVR_ATmega328PB__) || defined(__AVR_ATmega2560__) || defined(__AVR_ATmega1280__)
-#define CSN_PIN 10
-#define CE_PIN 9
+#define CSN_PIN 8
+#define CE_PIN 10
 #elif defined(ESP32)
 #define CSN_PIN 5
 #define CE_PIN 4
@@ -14,10 +24,20 @@
 #define CSN_PIN D8
 #define CE_PIN D4
 #else
-#define CSN_PIN 10
-#define CE_PIN 9
+#define CSN_PIN 8
+#define CE_PIN 10
 #endif
 
+#ifndef RF24_SPI_SPEED
+#define RF24_SPI_SPEED 2000000UL // 2 MHz SPI clock
+#endif
+
+// TM1638 LED Display Interface Pins (Connector P3: B5B-XH-A)
+#define DISPLAY_TM1638_DIO_PIN 9
+#define DISPLAY_TM1638_CLK_PIN A4
+#define DISPLAY_TM1638_STB_PIN A5
+
+// Dedicated Wi-Fi Guard Channel
 #ifndef CHANNEL
 #define CHANNEL 78
 #endif
@@ -30,47 +50,43 @@
 #define TEST 0
 #endif
 
-// Wi-Fi Guard Channel Hopping Table (Inter-Band low interference channels)
-static const uint8_t RADIO_CHANNELS[] = {4, 28, 54, 78, 82};
-static const uint8_t RADIO_CHANNEL_COUNT = sizeof(RADIO_CHANNELS) / sizeof(RADIO_CHANNELS[0]);
+// Safety Watchdog & Cycle Timings
+#define SAFETY_WATCHDOG_TIMEOUT_MS 150UL
+#define TX_CYCLE_PERIOD_MS 20UL
 
-// Logical Node IDs for Black Channel safety
-#define NODE_ID_RECEIVER    0x0001
-#define NODE_ID_TRANSMITTER 0x0002
-#define DEFAULT_SESSION_ID  0x1234
-
-// RF24 5-Byte Pipe Addresses
-static const uint8_t RF24_PIPE_RX[5] = {'S', 'F', '0', '0', '1'};
-static const uint8_t RF24_PIPE_TX[5] = {'S', 'F', '0', '0', '2'};
+// RF24 5-Byte Pipe Addresses (Pipes 1..5 share top 4 bytes per Nordic MultiCeiver spec)
+static const uint8_t RF24_PIPE_CONTROL[5]   = {'S', 'A', 'F', 'E', '1'}; // Transmitter -> Receiver
+static const uint8_t RF24_PIPE_TELEMETRY[5] = {'S', 'A', 'F', 'E', '2'}; // Receiver -> Transmitter
+static const uint8_t RF24_SAFETY_PIPE[5]    = {'S', 'A', 'F', 'E', '1'}; // Legacy alias
 
 // Button bitmasks for 15-button matrix (16-bit uint16_t)
 typedef enum buttons_enum
 {
     // Register (4 buttons)
-    BUTTON_REGISTER_AVANTI     = 0x0001,
-    BUTTON_REGISTER_INDIETRO   = 0x0002,
-    BUTTON_REGISTER_ABTERIORE  = 0x0004,
+    BUTTON_REGISTER_AVANTI = 0x0001,
+    BUTTON_REGISTER_INDIETRO = 0x0002,
+    BUTTON_REGISTER_ABTERIORE = 0x0004,
     BUTTON_REGISTER_POSTERIORE = 0x0008,
 
     // Anilox (4 buttons)
     BUTTON_ANILOX_AV_ANTERIORE = 0x0010,
     BUTTON_ANILOX_IN_ANTERIORE = 0x0020,
-    BUTTON_ANILOX_AV_POSTERIORE= 0x0040,
-    BUTTON_ANILOX_IN_POSTERIORE= 0x0080,
+    BUTTON_ANILOX_AV_POSTERIORE = 0x0040,
+    BUTTON_ANILOX_IN_POSTERIORE = 0x0080,
 
     // Cliche (4 buttons)
     BUTTON_CLICHE_AV_ANTERIORE = 0x0100,
     BUTTON_CLICHE_IN_ANTERIORE = 0x0200,
-    BUTTON_CLICHE_AV_POSTERIORE= 0x0400,
-    BUTTON_CLICHE_IN_POSTERIORE= 0x0800,
+    BUTTON_CLICHE_AV_POSTERIORE = 0x0400,
+    BUTTON_CLICHE_IN_POSTERIORE = 0x0800,
 
     // Color (3 buttons)
-    BUTTON_COLOR_ATTACCO       = 0x1000,
-    BUTTON_COLOR_STACCO        = 0x2000,
-    BUTTON_COLOR_COLORE        = 0x4000,
+    BUTTON_COLOR_ATTACCO = 0x1000,
+    BUTTON_COLOR_STACCO = 0x2000,
+    BUTTON_COLOR_COLORE = 0x4000,
 
     // Emergency / Safety stop bit
-    BUTTON_ESTOP_ACTIVE        = 0x8000
+    BUTTON_ESTOP_ACTIVE = 0x8000
 } buttons_enum;
 
 typedef enum ts_status

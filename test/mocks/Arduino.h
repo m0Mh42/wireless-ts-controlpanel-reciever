@@ -18,17 +18,19 @@ typedef bool boolean;
 #define OCT 8
 #define BIN 2
 
-// Analog pin aliases (matching Arduino Uno)
+// Analog pin aliases (matching Arduino ATmega328P Pro Mini / Nano)
 #define A0 14
 #define A1 15
 #define A2 16
 #define A3 17
 #define A4 18
 #define A5 19
+#define A6 20
+#define A7 21
 
 // Mock state — set by tests, read by mocks
-extern int mock_pin_read[20];
-extern int mock_pin_written[20];
+extern int mock_pin_read[32];
+extern int mock_pin_written[32];
 extern unsigned long mock_millis_value;
 extern unsigned long mock_last_delay_ms;
 
@@ -39,7 +41,9 @@ extern "C" {
     void digitalWrite(uint8_t pin, uint8_t value);
     void pinMode(uint8_t pin, uint8_t mode);
     unsigned long millis(void);
+    unsigned long micros(void);
     void delay(unsigned long ms);
+    void delayMicroseconds(unsigned int us);
     int analogRead(uint8_t pin);
 #ifdef __cplusplus
 }
@@ -62,6 +66,7 @@ extern HardwareSerial Serial;
 
 // AVR pgmspace compatibility for native
 #define PROGMEM
+#define F(str) str
 #define pgm_read_byte(addr) (*(const unsigned char *)(addr))
 #define pgm_read_word(addr) (*(const unsigned short *)(addr))
 #define pgm_read_dword(addr) (*(const uint32_t *)(addr))

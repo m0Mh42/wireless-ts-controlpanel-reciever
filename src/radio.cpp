@@ -1,41 +1,81 @@
 #include "radio.h"
+#include "display.h"
+#include <RF24.h>
+
+static RF24 s_hardware_radio(CE_PIN, CSN_PIN);
+static RF24 *s_active_radio = &s_hardware_radio;
 
 static uint8_t current_channel = CHANNEL;
-static uint8_t current_hop_index = 3; // Start at 78
 static uint8_t current_lqi = 100;
+static uint16_t lqi_scaled = 10000;
+static RadioRxDiagnostics diag = {0, 0, 0, 0, 0, 0, false, 1, 1};
 
 void radio_setup(RF24 *_radio)
 {
-    _radio->begin();
-    _radio->setAddressWidth(5);
-    _radio->openWritingPipe(RF24_PIPE_TX);
-    _radio->openReadingPipe(1, RF24_PIPE_RX);
-    _radio->setPALevel(RF24_PA_MAX);
-    _radio->setDataRate(RF24_250KBPS);
-    _radio->setChannel(current_channel);
-    _radio->setAutoAck(true);
-    _radio->setRetries(5, 15);
-    _radio->setPayloadSize(SAFETY_FRAME_SIZE);
-    _radio->startListening();
-
-    // Defected Chip Error Check
-    if (!_radio->isChipConnected())
+    if (_radio != NULL)
     {
-        while (true)
-        {
-            digitalWrite(LED_BUILTIN, HIGH);
-            delay(250);
-            digitalWrite(LED_BUILTIN, LOW);
-            delay(250);
-        }
+        s_active_radio = _radio;
     }
+    else
+    {
+        s_active_radio = &s_hardware_radio;
+    }
+
+    pinMode(CSN_PIN, OUTPUT);
+    digitalWrite(CSN_PIN, HIGH);
+    pinMode(CE_PIN, OUTPUT);
+    digitalWrite(CE_PIN, LOW);
+
+    delay(15); // Silicon Power-On Reset settling delay
+
+    s_active_radio->begin();
+    s_active_radio->setAddressWidth(5);
+    s_active_radio->setPALevel(RF24_PA_LEVEL_DEFAULT);
+    s_active_radio->setCRCLength(RF24_CRC_16);
+    s_active_radio->setDataRate(RF24_DATARATE_DEFAULT);
+    s_active_radio->setChannel(current_channel);
+
+    // Hardware Auto-ACK and Dynamic Payloads for ACK payloads
+    s_active_radio->enableDynamicPayloads();
+    s_active_radio->enableAckPayload();
+
+    // Open reading pipe 1 for control packets
+    s_active_radio->openReadingPipe(1, RF24_PIPE_CONTROL);
+
+    // Preload first ACK payload on pipe 1
+    TelemetryPacket initial_tel = {0, 1, 0, 0};
+    s_active_radio->writeAckPayload(1, &initial_tel, sizeof(TelemetryPacket));
+
+    // Receiver permanently in RX mode
+    s_active_radio->startListening();
+
+    if (!s_active_radio->isChipConnected())
+    {
+        diag.last_error_code = 1;
+        display_show_radio_error();
+    }
+}
+
+void radio_lqi_tick(uint32_t now_ms)
+{
+    (void)now_ms;
 }
 
 void radio_update_lqi(bool success)
 {
-    // Exponential Moving Average
-    uint16_t sample = success ? 100 : 0;
-    current_lqi = (uint8_t)((20 * sample + 80 * current_lqi) / 100);
+    if (success)
+    {
+        lqi_scaled = (uint16_t)(((uint32_t)lqi_scaled * 95 + 50000UL + 99) / 100);
+        if (lqi_scaled > 10000)
+        {
+            lqi_scaled = 10000;
+        }
+    }
+    else
+    {
+        lqi_scaled = (uint16_t)(((uint32_t)lqi_scaled * 95) / 100);
+    }
+    current_lqi = (uint8_t)((lqi_scaled + 50) / 100);
 }
 
 uint8_t radio_get_lqi()
@@ -43,91 +83,62 @@ uint8_t radio_get_lqi()
     return current_lqi;
 }
 
-bool radio_read_frame(RF24 *_radio, SafetyFrame *out_frame, uint32_t *last_valid_seq)
+bool radio_send_telemetry(const TelemetryPacket &telemetry, RF24 *_radio)
 {
-    if (_radio->available())
-    {
-        uint8_t rx_buf[SAFETY_FRAME_SIZE];
-        _radio->read(rx_buf, SAFETY_FRAME_SIZE);
-
-        SafetyValidationResult res = SafetyProtocolEngine::deserialize_and_validate(
-            rx_buf,
-            SAFETY_FRAME_SIZE,
-            NODE_ID_TRANSMITTER,
-            NODE_ID_RECEIVER,
-            DEFAULT_SESSION_ID,
-            *last_valid_seq,
-            100,
-            *out_frame
-        );
-
-        if (res == SafetyValidationResult::VALID)
-        {
-            *last_valid_seq = out_frame->sequence_number;
-            radio_update_lqi(true);
-            return true;
-        }
-        else
-        {
-            radio_update_lqi(false);
-            return false;
-        }
-    }
-    return false;
+    RF24 *r = (_radio != NULL) ? _radio : s_active_radio;
+    // Stage telemetry payload into the ACK FIFO for pipe 1
+    return r->writeAckPayload(1, &telemetry, sizeof(TelemetryPacket));
 }
 
-bool radio_send_telemetry(RF24 *_radio, uint8_t active_unit, ts_status status, uint32_t seq)
+bool radio_send_telemetry(uint8_t active_unit, ts_status status, uint8_t seq_ack, RF24 *_radio)
 {
-    SafetyFrame tx_frame;
-    tx_frame.preamble = PROTOCOL_MAGIC_PREAMBLE;
-    tx_frame.version = PROTOCOL_VERSION;
-    tx_frame.sender_id = NODE_ID_RECEIVER;
-    tx_frame.target_id = NODE_ID_TRANSMITTER;
-    tx_frame.sequence_number = seq;
-    tx_frame.session_id = DEFAULT_SESSION_ID;
-    tx_frame.frame_type = FrameType::TELEMETRY;
-    tx_frame.payload_length = sizeof(ApplicationPayload);
+    TelemetryPacket tel;
+    tel.active_unit = active_unit;
+    tel.status = (uint8_t)status;
+    tel.seq_ack = seq_ack;
+    tel.padding = 0;
+    return radio_send_telemetry(tel, _radio);
+}
 
-    SafetyProtocolEngine::pack_buttons(0, tx_frame.payload);
-    tx_frame.payload.active_unit = active_unit;
-    tx_frame.payload.status_flags = (uint8_t)status;
-    tx_frame.payload.battery_mv = 0;
-    tx_frame.payload.diagnostic_flags = ((uint16_t)current_channel) | (((uint16_t)current_lqi) << 8);
-    tx_frame.payload.spare1 = 0;
-    tx_frame.payload.spare2 = 0;
-
-    uint8_t tx_buf[SAFETY_FRAME_SIZE];
-    if (!SafetyProtocolEngine::serialize_frame(tx_frame, tx_buf, sizeof(tx_buf)))
+bool radio_receive_control(ControlPacket *out_packet, RF24 *_radio)
+{
+    RF24 *r = (_radio != NULL) ? _radio : s_active_radio;
+    if (!r->available())
     {
         return false;
     }
 
-    _radio->stopListening();
-    bool sent = _radio->write(tx_buf, SAFETY_FRAME_SIZE);
-    _radio->startListening();
+    diag.rx_raw_count++;
+    ControlPacket pkt;
+    r->read(&pkt, sizeof(ControlPacket));
 
-    radio_update_lqi(sent);
-    return sent;
+    // Dual-rail bitwise complement safety check
+    if (!protocol_verify_buttons(pkt.buttons, pkt.buttons_inv))
+    {
+        diag.rx_reject_count++;
+        diag.last_rx_ok = false;
+        diag.last_error_code = 4; // VALIDATION_ERR
+        radio_update_lqi(false);
+        return false;
+    }
+
+    diag.rx_valid_count++;
+    diag.last_rx_ok = true;
+    diag.last_error_code = 0;
+    radio_update_lqi(true);
+
+    if (out_packet != NULL)
+    {
+        *out_packet = pkt;
+    }
+    return true;
 }
 
 bool radio_set_channel(RF24 *_radio, uint8_t channel)
 {
-    bool allowed = false;
-    for (uint8_t i = 0; i < RADIO_CHANNEL_COUNT; ++i)
-    {
-        if (RADIO_CHANNELS[i] == channel)
-        {
-            allowed = true;
-            current_hop_index = i;
-            break;
-        }
-    }
-    if (!allowed) return false;
-
+    RF24 *r = (_radio != NULL) ? _radio : s_active_radio;
     current_channel = channel;
-    _radio->stopListening();
-    _radio->setChannel(channel);
-    _radio->startListening();
+    r->setChannel(current_channel);
     return true;
 }
 
@@ -138,9 +149,51 @@ uint8_t radio_get_channel()
 
 void radio_hop_next_channel(RF24 *_radio)
 {
-    current_hop_index = (current_hop_index + 1) % RADIO_CHANNEL_COUNT;
-    current_channel = RADIO_CHANNELS[current_hop_index];
-    _radio->stopListening();
-    _radio->setChannel(current_channel);
-    _radio->startListening();
+    uint8_t next = (current_channel == 78) ? 88 : 78;
+    radio_set_channel(_radio, next);
+}
+
+void radio_recover_channel(RF24 *_radio)
+{
+    radio_set_channel(_radio, CHANNEL);
+}
+
+bool radio_is_chip_connected(RF24 *_radio)
+{
+    RF24 *r = (_radio != NULL) ? _radio : s_active_radio;
+    return r->isChipConnected();
+}
+
+const RadioRxDiagnostics &radio_get_diagnostics()
+{
+    return diag;
+}
+
+void radio_reset_diagnostics()
+{
+    diag.rx_raw_count = 0;
+    diag.rx_valid_count = 0;
+    diag.rx_crc_err_count = 0;
+    diag.rx_len_err_count = 0;
+    diag.rx_reject_count = 0;
+    diag.last_error_code = 0;
+    diag.last_rx_ok = false;
+    current_lqi = 100;
+    lqi_scaled = 10000;
+}
+
+void radio_set_mode_rx(RF24 *_radio)
+{
+    RF24 *r = (_radio != NULL) ? _radio : s_active_radio;
+    r->startListening();
+}
+
+void radio_set_mode_tx(RF24 *_radio)
+{
+    (void)_radio;
+}
+
+bool radio_is_rx_mode()
+{
+    return true;
 }
