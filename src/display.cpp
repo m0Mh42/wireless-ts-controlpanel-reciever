@@ -4,7 +4,6 @@
 #include <string.h>
 #include <TM16xx.h>
 
-
 // Internal 16-byte RAM mirror for TM1638 (GRID1..GRID8, 2 bytes each)
 static uint8_t tm_ram[16];
 static uint8_t current_brightness = 7;
@@ -448,7 +447,7 @@ void display_update(ts_status status, uint8_t active_unit, uint16_t buttons, boo
     display_refresh();
 }
 
-void display_show_packet_debug(const RadioRxDiagnostics& diag, uint8_t channel, uint8_t lqi, bool chip_connected)
+void display_show_packet_debug(const RadioRxDiagnostics &diag, uint8_t channel, uint8_t lqi, bool chip_connected)
 {
     display_enabled = true;
 
@@ -511,8 +510,10 @@ void display_show_packet_debug(const RadioRxDiagnostics& diag, uint8_t channel, 
     if (lqi > 0)
     {
         bars = (uint8_t)(((uint16_t)lqi * 10 + 50) / 100);
-        if (bars > 10) bars = 10;
-        if (bars == 0 && lqi > 0) bars = 1;
+        if (bars > 10)
+            bars = 10;
+        if (bars == 0 && lqi > 0)
+            bars = 1;
     }
     display_set_bar(bars);
 
@@ -523,13 +524,16 @@ void display_show_packet_debug(const RadioRxDiagnostics& diag, uint8_t channel, 
     // Bit 3: Yel 2  (0x08) -> 1 Mbps mode active
     // Bit 4: Yel 3  (0x10) -> nRF chip connected
     uint8_t ind_mask = 0;
-    if (diag.last_rx_ok) ind_mask |= DISPLAY_IND_GREEN;
-    if (!diag.last_rx_ok && diag.rx_raw_count > 0) ind_mask |= DISPLAY_IND_RED;
+    if (diag.last_rx_ok)
+        ind_mask |= DISPLAY_IND_GREEN;
+    if (!diag.last_rx_ok && diag.rx_raw_count > 0)
+        ind_mask |= DISPLAY_IND_RED;
     ind_mask |= DISPLAY_IND_YEL1; // Receiver constantly arms ACK payload
-    if (diag.datarate_1mbps) ind_mask |= DISPLAY_IND_YEL2;
-    if (chip_connected) ind_mask |= DISPLAY_IND_YEL3;
+    if (diag.datarate_1mbps)
+        ind_mask |= DISPLAY_IND_YEL2;
+    if (chip_connected)
+        ind_mask |= DISPLAY_IND_YEL3;
 
     display_set_indicators(ind_mask);
     display_refresh();
 }
-

@@ -13,8 +13,8 @@
 // UTECO Machine PLC Inputs (Time-Multiplexed Scan Slices)
 #define PLCI_MUX1 6
 #define PLCI_MUX2 7
-#define PLCI_MUX3 A7
-#define PLCI_MUX4 A6
+#define PLCI_MUX3 A7 // Note: Dedicated analog pin on ATmega328P; sampled via analogRead threshold
+#define PLCI_MUX4 A6 // Note: Dedicated analog pin on ATmega328P; sampled via analogRead threshold
 
 // UTECO Machine PLC Outputs (Button Actuators)
 #define PLCO_REGISTER A0

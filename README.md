@@ -24,11 +24,11 @@ Industrial safety firmware for the **receiver (PLC Interface Base Station)** nod
 | :--- | :--- | :--- | :--- |
 | **VDD** | 3.3V (Ext. Filtered) | Power | 3.3V DC Power with 10µF + 100nF decoupling |
 | **GND** | GND | Power | Common Ground |
-| **CE** | D13 (Pin 13) | Output | Chip Enable (Rx/Tx mode transition) |
-| **SCK** | D12 (Pin 12) | Output | SPI Clock |
-| **MISO** | D11 (Pin 11) | Input | Master In Slave Out |
-| **MOSI** | D10 (Pin 10) | Output | Master Out Slave In |
-| **CSN** | A7 (Pin 21) | Output | SPI Chip Select Not |
+| **CE** | D10 (Pin 10) | Output | Chip Enable (Rx/Tx mode transition) |
+| **CSN** | D8 (Pin 8) | Output | SPI Chip Select Not |
+| **SCK** | D13 (Pin 13) | Output | SPI Clock |
+| **MISO** | D12 (Pin 12) | Input | Master In Slave Out |
+| **MOSI** | D11 (Pin 11) | Output | Master Out Slave In |
 
 ### 2. UTECO Machine PLC Interface
 | Signal | Pin | Direction | Function |
@@ -39,8 +39,8 @@ Industrial safety firmware for the **receiver (PLC Interface Base Station)** nod
 | `PLCI_DISPLAYD` | D5 | Input | BCD Active Printing Unit Bit 3 (Weight 8) |
 | `PLCI_MUX1` | D6 | Input | PLC Scan Slice 0 Select (Register Avanti, Anilox Av Ant, Cliche Av Ant, Color Attacco) |
 | `PLCI_MUX2` | D7 | Input | PLC Scan Slice 1 Select (Register Indietro, Anilox In Ant, Cliche In Ant, Color Stacco) |
-| `PLCI_MUX3` | D8 | Input | PLC Scan Slice 2 Select (Register Abteriore, Anilox Av Post, Cliche Av Post, Color Colore) |
-| `PLCI_MUX4` | D9 | Input | PLC Scan Slice 3 Select (Register Posteriore, Anilox In Post, Cliche In Post, Spare) |
+| `PLCI_MUX3` | A7 (Pin 21) | Input (Analog) | PLC Scan Slice 2 Select (Register Abteriore, Anilox Av Post, Cliche Av Post, Color Colore) |
+| `PLCI_MUX4` | A6 (Pin 20) | Input (Analog) | PLC Scan Slice 3 Select (Register Posteriore, Anilox In Post, Cliche In Post, Spare) |
 | `PLCO_REGISTER` | A0 (Pin 14) | Output | Register Actuation Output |
 | `PLCO_ANILOX` | A1 (Pin 15) | Output | Anilox Actuation Output |
 | `PLCO_CLICHE` | A2 (Pin 16) | Output | Cliche Actuation Output |
@@ -53,7 +53,7 @@ Mates directly with `ALC-40266RGY2` dual 4-digit 7-segment display module (`Tran
 | Signal | Pin | Direction | Description |
 | :--- | :--- | :--- | :--- |
 | **GND** | GND (Pin 1) | Power | Common Ground |
-| **TM_DIO** | A6 (Pin 20) | Bidirectional | TM1638 Serial Data Input/Output |
+| **TM_DIO** | D9 (Pin 9) | Bidirectional | TM1638 Serial Data Input/Output |
 | **TM_CLK** | A4 (Pin 18) | Output | TM1638 Serial Clock |
 | **TM_STB** | A5 (Pin 19) | Output | TM1638 Chip Strobe |
 | **VCC** | VCC 5V (Pin 5) | Power | 5V DC Supply |

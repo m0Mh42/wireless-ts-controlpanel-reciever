@@ -1,10 +1,26 @@
 #include "io.h"
 
+// ATmega328P pins A6 and A7 are dedicated analog inputs (ADC6/ADC7) without digital I/O buffers.
+// digitalRead() on AVR always returns LOW for A6 and A7.
+// We read their digital state via analogRead() with a 2.5V threshold (512 / 1023).
+#define ANALOG_PIN_HIGH_THRESHOLD 512
+
+static inline bool io_read_mux_pin(uint8_t pin)
+{
+    if (pin == A6 || pin == A7)
+    {
+        return analogRead(pin) >= ANALOG_PIN_HIGH_THRESHOLD;
+    }
+    return digitalRead(pin) == HIGH;
+}
+
 void io_init()
 {
     // Configure PLC multiplexer input pins
     pinMode(PLCI_MUX1, INPUT);
     pinMode(PLCI_MUX2, INPUT);
+    // Note: PLCI_MUX3 (A7) and PLCI_MUX4 (A6) are dedicated analog inputs on ATmega328P (no digital I/O buffers).
+    // pinMode() is a no-op for A6/A7 in Arduino AVR core, but calling it is harmless.
     pinMode(PLCI_MUX3, INPUT);
     pinMode(PLCI_MUX4, INPUT);
 
@@ -33,13 +49,13 @@ void io_init()
 
 uint8_t io_read_encode_mux()
 {
-    if (digitalRead(PLCI_MUX1) == HIGH)
+    if (io_read_mux_pin(PLCI_MUX1))
         return 0;
-    if (digitalRead(PLCI_MUX2) == HIGH)
+    if (io_read_mux_pin(PLCI_MUX2))
         return 1;
-    if (digitalRead(PLCI_MUX3) == HIGH)
+    if (io_read_mux_pin(PLCI_MUX3))
         return 2;
-    if (digitalRead(PLCI_MUX4) == HIGH)
+    if (io_read_mux_pin(PLCI_MUX4))
         return 3;
     return 255; // No valid MUX active
 }
@@ -74,7 +90,8 @@ void io_clear_all_buttons()
 // Non-blocking deterministic software output multiplexing per PLC scan slice
 void io_write_buttons(uint16_t _buttons)
 {
-    if (_buttons == 0) {
+    if (_buttons == 0)
+    {
         io_clear_all_buttons();
         return;
     }

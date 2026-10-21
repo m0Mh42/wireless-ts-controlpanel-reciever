@@ -95,6 +95,9 @@ static void mock_reset(void) {
 extern "C" {
 
 int digitalRead(uint8_t pin) {
+    if (pin == A6 || pin == A7) {
+        return LOW; // Hardware restriction: ATmega328P A6 and A7 have no digital input buffers
+    }
     if (pin >= 6 && pin <= 9 && mock_mux_cycling_enabled) {
         int mux_pos = (mock_mux_read_count / 4) % 4;
         mock_mux_read_count++;
@@ -126,6 +129,9 @@ void delayMicroseconds(unsigned int us) {
 }
 
 int analogRead(uint8_t pin) {
+    if (mock_pin_read[pin] == HIGH) {
+        return 1023; // High digital logic level translates to full-scale ADC
+    }
     return mock_pin_read[pin];
 }
 
@@ -221,12 +227,90 @@ static void test_io_read_mux_position_0(void) {
     TEST_ASSERT_EQUAL_UINT8(0, io_read_encode_mux());
 }
 
+static void test_io_read_mux_position_1(void) {
+    mock_reset();
+    mock_pin_read[PLCI_MUX1] = LOW;
+    mock_pin_read[PLCI_MUX2] = HIGH;
+    mock_pin_read[PLCI_MUX3] = LOW;
+    mock_pin_read[PLCI_MUX4] = LOW;
+    TEST_ASSERT_EQUAL_UINT8(1, io_read_encode_mux());
+}
+
+static void test_io_read_mux_position_2(void) {
+    mock_reset();
+    mock_pin_read[PLCI_MUX1] = LOW;
+    mock_pin_read[PLCI_MUX2] = LOW;
+    mock_pin_read[PLCI_MUX3] = HIGH;
+    mock_pin_read[PLCI_MUX4] = LOW;
+    TEST_ASSERT_EQUAL_UINT8(2, io_read_encode_mux());
+}
+
 static void test_io_read_mux_position_3(void) {
     mock_reset();
     mock_pin_read[PLCI_MUX1] = LOW;
     mock_pin_read[PLCI_MUX2] = LOW;
     mock_pin_read[PLCI_MUX3] = LOW;
     mock_pin_read[PLCI_MUX4] = HIGH;
+    TEST_ASSERT_EQUAL_UINT8(3, io_read_encode_mux());
+}
+
+static void test_io_read_mux_a6_a7_analog_adc(void) {
+    mock_reset();
+    // Test A7 (PLCI_MUX3) above threshold (600 >= 512)
+    mock_pin_read[PLCI_MUX3] = 600;
+    TEST_ASSERT_EQUAL_UINT8(2, io_read_encode_mux());
+
+    // Test A7 below threshold (400 < 512) -> invalid
+    mock_pin_read[PLCI_MUX3] = 400;
+    TEST_ASSERT_EQUAL_UINT8(255, io_read_encode_mux());
+
+    // Test A6 (PLCI_MUX4) above threshold (1023 >= 512)
+    mock_pin_read[PLCI_MUX3] = LOW;
+    mock_pin_read[PLCI_MUX4] = 1023;
+    TEST_ASSERT_EQUAL_UINT8(3, io_read_encode_mux());
+
+    // Test A6 below threshold (100 < 512) -> invalid
+    mock_pin_read[PLCI_MUX4] = 100;
+    TEST_ASSERT_EQUAL_UINT8(255, io_read_encode_mux());
+}
+
+static void test_io_read_mux_a6_a7_exact_threshold_boundary(void) {
+    mock_reset();
+    // Exact threshold boundary: 512 is HIGH (active)
+    mock_pin_read[PLCI_MUX3] = 512;
+    TEST_ASSERT_EQUAL_UINT8(2, io_read_encode_mux());
+
+    // 511 is LOW (inactive)
+    mock_pin_read[PLCI_MUX3] = 511;
+    TEST_ASSERT_EQUAL_UINT8(255, io_read_encode_mux());
+
+    // Noise level (e.g. 15 ADC counts on grounded pin) is LOW
+    mock_pin_read[PLCI_MUX3] = 15;
+    TEST_ASSERT_EQUAL_UINT8(255, io_read_encode_mux());
+
+    // Exact threshold boundary for MUX4 (A6):
+    mock_pin_read[PLCI_MUX3] = 0;
+    mock_pin_read[PLCI_MUX4] = 512;
+    TEST_ASSERT_EQUAL_UINT8(3, io_read_encode_mux());
+
+    mock_pin_read[PLCI_MUX4] = 511;
+    TEST_ASSERT_EQUAL_UINT8(255, io_read_encode_mux());
+}
+
+static void test_io_read_mux_a6_a7_hardware_digitalread_limitation(void) {
+    mock_reset();
+    // Simulate external 5V applied to A6 and A7
+    mock_pin_read[PLCI_MUX3] = 1023;
+    mock_pin_read[PLCI_MUX4] = 1023;
+
+    // Direct digitalRead on ATmega328P A6 and A7 MUST always return LOW
+    TEST_ASSERT_EQUAL_INT(LOW, digitalRead(PLCI_MUX3));
+    TEST_ASSERT_EQUAL_INT(LOW, digitalRead(PLCI_MUX4));
+
+    // But io_read_encode_mux() MUST correctly detect them via ADC threshold
+    TEST_ASSERT_EQUAL_UINT8(2, io_read_encode_mux());
+
+    mock_pin_read[PLCI_MUX3] = 0;
     TEST_ASSERT_EQUAL_UINT8(3, io_read_encode_mux());
 }
 
@@ -279,6 +363,67 @@ static void test_io_write_buttons_16bit_fixed(void) {
     io_write_buttons(b);
     TEST_ASSERT_EQUAL_INT(HIGH, mock_pin_written[PLCO_REGISTER]);
     TEST_ASSERT_EQUAL_INT(LOW, mock_pin_written[PLCO_ANILOX]);
+}
+
+static void test_io_write_buttons_all_slices_fixed(void) {
+    // Slice 1 (MUX2): BUTTON_ANILOX_IN_ANTERIORE (0x0040)
+    mock_reset();
+    mock_pin_read[PLCI_MUX2] = HIGH;
+    io_write_buttons(BUTTON_ANILOX_IN_ANTERIORE);
+    TEST_ASSERT_EQUAL_INT(HIGH, mock_pin_written[PLCO_ANILOX]);
+    TEST_ASSERT_EQUAL_INT(LOW, mock_pin_written[PLCO_REGISTER]);
+
+    // Slice 2 (MUX3 - A7): BUTTON_ANILOX_AV_POSTERIORE (0x0020) via ADC
+    mock_reset();
+    mock_pin_read[PLCI_MUX3] = 1023;
+    io_write_buttons(BUTTON_ANILOX_AV_POSTERIORE);
+    TEST_ASSERT_EQUAL_INT(HIGH, mock_pin_written[PLCO_ANILOX]);
+    TEST_ASSERT_EQUAL_INT(LOW, mock_pin_written[PLCO_REGISTER]);
+
+    // Slice 2 (MUX3 - A7): BUTTON_REGISTER_ABTERIORE (0x0004)
+    mock_reset();
+    mock_pin_read[PLCI_MUX3] = 1023;
+    io_write_buttons(BUTTON_REGISTER_ABTERIORE);
+    TEST_ASSERT_EQUAL_INT(HIGH, mock_pin_written[PLCO_REGISTER]);
+    TEST_ASSERT_EQUAL_INT(LOW, mock_pin_written[PLCO_ANILOX]);
+
+    // Slice 3 (MUX4 - A6): BUTTON_ANILOX_IN_POSTERIORE (0x0080) via ADC
+    mock_reset();
+    mock_pin_read[PLCI_MUX4] = 1023;
+    io_write_buttons(BUTTON_ANILOX_IN_POSTERIORE);
+    TEST_ASSERT_EQUAL_INT(HIGH, mock_pin_written[PLCO_ANILOX]);
+
+    // Slice 3 (MUX4 - A6): BUTTON_CLICHE_IN_POSTERIORE (0x0800) via ADC
+    mock_reset();
+    mock_pin_read[PLCI_MUX4] = 1023;
+    io_write_buttons(BUTTON_CLICHE_IN_POSTERIORE);
+    TEST_ASSERT_EQUAL_INT(HIGH, mock_pin_written[PLCO_CLICHE]);
+}
+
+static void test_receiver_buttons_enum_bitmask_consistency(void) {
+    // Register (Row 0: D9)
+    TEST_ASSERT_EQUAL_HEX16(0x0001, BUTTON_REGISTER_AVANTI);     // D9 - D3
+    TEST_ASSERT_EQUAL_HEX16(0x0002, BUTTON_REGISTER_INDIETRO);   // D9 - D4
+    TEST_ASSERT_EQUAL_HEX16(0x0004, BUTTON_REGISTER_ABTERIORE);  // D9 - D5
+    TEST_ASSERT_EQUAL_HEX16(0x0008, BUTTON_REGISTER_POSTERIORE); // D9 - D6
+
+    // Anilox (Row 1: D18)
+    TEST_ASSERT_EQUAL_HEX16(0x0010, BUTTON_ANILOX_AV_ANTERIORE);  // D18 - D3
+    TEST_ASSERT_EQUAL_HEX16(0x0020, BUTTON_ANILOX_AV_POSTERIORE); // D18 - D4
+    TEST_ASSERT_EQUAL_HEX16(0x0040, BUTTON_ANILOX_IN_ANTERIORE);  // D18 - D5
+    TEST_ASSERT_EQUAL_HEX16(0x0080, BUTTON_ANILOX_IN_POSTERIORE); // D18 - D6
+
+    // Cliche (Row 2: D19)
+    TEST_ASSERT_EQUAL_HEX16(0x0100, BUTTON_CLICHE_AV_ANTERIORE);  // D19 - D3
+    TEST_ASSERT_EQUAL_HEX16(0x0200, BUTTON_CLICHE_IN_ANTERIORE);  // D19 - D4
+    TEST_ASSERT_EQUAL_HEX16(0x0400, BUTTON_CLICHE_AV_POSTERIORE); // D19 - D5
+    TEST_ASSERT_EQUAL_HEX16(0x0800, BUTTON_CLICHE_IN_POSTERIORE); // D19 - D6
+
+    // Color & E-Stop (Row 3: D20)
+    TEST_ASSERT_EQUAL_HEX16(0x1000, BUTTON_COLOR_ATTACCO); // D20 - D3
+    TEST_ASSERT_EQUAL_HEX16(0x2000, BUTTON_COLOR_STACCO);  // D20 - D4
+    TEST_ASSERT_EQUAL_HEX16(0x4000, BUTTON_COLOR_COLORE);  // D20 - D5
+    TEST_ASSERT_EQUAL_HEX16(0x8000, BUTTON_ESTOP_ACTIVE);  // D20 - D6
 }
 
 // ============================================================
@@ -523,12 +668,19 @@ int main(int argc, char **argv) {
     // IO
     RUN_TEST(test_io_read_mux_all_low);
     RUN_TEST(test_io_read_mux_position_0);
+    RUN_TEST(test_io_read_mux_position_1);
+    RUN_TEST(test_io_read_mux_position_2);
     RUN_TEST(test_io_read_mux_position_3);
+    RUN_TEST(test_io_read_mux_a6_a7_analog_adc);
+    RUN_TEST(test_io_read_mux_a6_a7_exact_threshold_boundary);
+    RUN_TEST(test_io_read_mux_a6_a7_hardware_digitalread_limitation);
     RUN_TEST(test_io_read_active_unit_bcd);
     RUN_TEST(test_io_write_faststop_states);
     RUN_TEST(test_io_write_enable_states);
     RUN_TEST(test_io_clear_all_buttons);
     RUN_TEST(test_io_write_buttons_16bit_fixed);
+    RUN_TEST(test_io_write_buttons_all_slices_fixed);
+    RUN_TEST(test_receiver_buttons_enum_bitmask_consistency);
 
     // Radio
     RUN_TEST(test_radio_setup_receiver);
